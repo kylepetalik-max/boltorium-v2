@@ -24,7 +24,7 @@ export default function PhoneShell({ children }) {
           <button
             aria-label="More"
             onClick={() => setMore(true)}
-            className="safe-t absolute right-3 top-2 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-bolt/30 bg-void/70 text-bolt"
+            className="safe-t absolute right-3 top-2 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 bg-void/70 text-gold"
           >
             <span className="headline text-lg leading-none">···</span>
           </button>

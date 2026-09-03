@@ -8,7 +8,10 @@
     "dev": "vite --host",
     "build": "vite build",
     "preview": "vite preview --host",
-    "cap:sync": "vite build && cap sync"
+    "cap:sync": "npm run build:cap",
+    "build:pages": "VITE_BASE=/boltorium-v2/ vite build",
+    "build:cap": "VITE_BASE=./ vite build",
+    "postbuild:cap": "cap sync"
   },
   "dependencies": {
     "@boltorium/striker": "file:./packages/striker",

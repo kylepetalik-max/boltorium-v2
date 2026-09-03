@@ -100,7 +100,7 @@ export default function Tune() {
     <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-5 pt-11">
       <header className="flex items-center justify-between gap-2 pr-10">
         <img
-          src={asset('brand/b-mark.png')}
+          src={asset('brand/bmark-icon.png')}
           alt=""
           className="graffiti-only h-10 w-10 object-contain drop-shadow-[0_0_12px_rgba(34,224,106,0.65)]"
         />

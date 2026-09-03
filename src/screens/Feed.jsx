@@ -69,7 +69,7 @@ export default function Feed() {
     <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden">
       <div className="px-4 pt-11 pr-12">
         <div className="flex items-center gap-2">
-          <img src={asset('brand/b-mark.png')} alt="" className="graffiti-only h-9 w-9 object-contain" />
+          <img src={asset('brand/bmark-icon.png')} alt="" className="graffiti-only h-9 w-9 object-contain" />
           <p className="headline flex-1 text-center text-2xl text-bolt">FEED</p>
           <button
             type="button"
@@ -111,7 +111,7 @@ export default function Feed() {
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-bolt/40">
-                    <img src={asset('brand/b-mark.png')} alt="" className="h-5 w-5 object-contain" />
+                    <img src={asset('brand/bmark-icon.png')} alt="" className="h-5 w-5 object-contain" />
                   </span>
                   <p className="headline text-sm">{p.user}</p>
                   <span className="rounded-full border border-bolt/30 px-2 py-0.5 font-mono text-[8px] text-bolt">
@@ -145,14 +145,14 @@ function Thumb({ kind }) {
         <svg viewBox="0 0 64 64" className="h-12 w-12 text-bone/70" fill="currentColor" aria-hidden>
           <path d="M20 22c0-10 24-10 24 0v4l8 6v24H12V32l8-6z" opacity="0.85" />
         </svg>
-        <img src={asset('brand/b-mark.png')} alt="" className="absolute h-6 w-6 object-contain" />
+        <img src={asset('brand/bmark-icon.png')} alt="" className="absolute h-6 w-6 object-contain" />
       </div>
     );
   }
   if (kind === 'crew') {
     return (
       <div className="flex h-full items-center justify-center">
-        <img src={asset('brand/b-mark.png')} alt="" className="h-10 w-10 object-contain" />
+        <img src={asset('brand/bmark-icon.png')} alt="" className="h-10 w-10 object-contain" />
       </div>
     );
   }

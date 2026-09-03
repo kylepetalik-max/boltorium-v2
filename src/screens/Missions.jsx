@@ -153,6 +153,6 @@ function KindIcon({ kind }) {
 
 function BTiny() {
   return (
-    <img src={asset('brand/b-mark.png')} alt="" className="graffiti-only h-3.5 w-3.5 object-contain" />
+    <img src={asset('brand/bmark-icon.png')} alt="" className="graffiti-only h-3.5 w-3.5 object-contain" />
   );
 }

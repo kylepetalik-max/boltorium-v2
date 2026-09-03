@@ -4,7 +4,7 @@ import { listVehicles } from '../lib/vehicles.js';
 import { useStore } from '../state/store.jsx';
 import { formatInt } from '../lib/format.js';
 import { asset } from '../lib/asset.js';
-
+import VaultBg from '../components/VaultBg.jsx';
 
 const CATALOG = listVehicles();
 const CATS = ['EUC', 'E-MOTO', 'SCOOTER', 'AIR'];
@@ -45,10 +45,9 @@ export default function Garage() {
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-5 pt-11">
-      <img src={asset('brand/garage-3d.png')} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-55" />
-      <div className="pointer-events-none absolute inset-0 bg-void/45" />
+      <VaultBg src="brand/garage-3d.png" opacity={0.12} blur={16} />
 
-      <header className="flex items-center justify-between gap-2 pr-10">
+      <header className="relative flex items-center justify-between gap-2 pr-10">
         <p className="headline text-[1.65rem] leading-none text-gold">GARAGE + TUNE</p>
         <div className="flex items-center gap-1.5">
           <div className="flex items-center gap-1 rounded-full border border-gold/40 bg-void px-2.5 py-1">
@@ -58,7 +57,7 @@ export default function Garage() {
           <button
             type="button"
             onClick={() => nav('/wallet')}
-            className="flex h-7 w-7 items-center justify-center rounded-md border border-bone/20 text-bone"
+            className="flex h-7 w-7 items-center justify-center rounded-md border border-gold/40 text-gold"
             aria-label="Add Boltz"
           >
             +
@@ -66,7 +65,7 @@ export default function Garage() {
         </div>
       </header>
 
-      <div className="mt-4 flex gap-1.5 overflow-x-auto">
+      <div className="relative mt-4 flex gap-1.5 overflow-x-auto">
         {CATS.map((c) => {
           const on = c === cat;
           return (
@@ -76,7 +75,7 @@ export default function Garage() {
               onClick={() => setCat(c)}
               className={`shrink-0 rounded-full px-3.5 py-1.5 font-display text-[12px] italic font-extrabold tracking-wide ${
                 on
-                  ? 'border border-bolt bg-bolt/10 text-bolt shadow-bolt'
+                  ? 'border border-gold bg-gold/10 text-gold shadow-gold'
                   : 'border border-transparent bg-graphite text-bone/50'
               }`}
             >
@@ -86,58 +85,58 @@ export default function Garage() {
         })}
       </div>
 
-      <div className="relative mt-4 overflow-hidden rounded-2xl border border-bone/15 bg-graphite">
+      <div className="relative mt-4 overflow-hidden rounded-2xl border border-gold/25 bg-graphite/80">
         <div className="flex items-start justify-between px-3 pt-3">
           <div>
             <p className="headline text-base text-bone">YOUR RIDE</p>
-            <p className="hud-label mt-0.5 text-bolt">{vehicle.label.toUpperCase()}</p>
+            <p className="hud-label mt-0.5 text-gold">{vehicle.label.toUpperCase()}</p>
           </div>
           <p className="flex items-center gap-1.5 font-hud text-sm text-bone">
             100%
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-bolt text-[10px] text-void">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-gold text-[10px] text-void">
               ⚡
             </span>
           </p>
         </div>
         <div className="relative mx-auto h-40 w-full">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_80%,rgba(34,224,106,0.12),transparent_58%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_80%,rgba(212,175,55,0.14),transparent_58%)]" />
           <RideArt />
           <img
-            src={asset('brand/b-mark.png')}
+            src={asset('brand/bmark-icon.png')}
             alt=""
-            className="graffiti-only pointer-events-none absolute bottom-2 left-1/2 h-16 w-16 -translate-x-1/2 object-contain mix-blend-screen"
+            className="pointer-events-none absolute bottom-2 left-1/2 h-16 w-16 -translate-x-1/2 object-contain"
           />
         </div>
       </div>
 
-      <div className="mt-3 rounded-2xl border border-bone/12 bg-void/40 p-3">
+      <div className="relative mt-3 rounded-2xl border border-gold/20 bg-void/55 p-3">
         <div className="mb-2 flex items-center justify-between">
           <p className="headline text-sm text-bone">EQUIPPED GEAR</p>
-          <button type="button" onClick={() => nav('/tune')} className="hud-label text-bolt">
+          <button type="button" onClick={() => nav('/tune')} className="hud-label text-gold">
             CUSTOMIZE
           </button>
         </div>
         <div className="grid grid-cols-2 gap-2">
           {GEAR.map((g) => (
-            <div key={g.id} className="rounded-xl border border-bone/12 bg-void p-2">
+            <div key={g.id} className="rounded-xl border border-gold/15 bg-void p-2">
               <div className="flex h-20 items-center justify-center">
                 <img
-                  src={asset('brand/b-mark.png')}
+                  src={asset('brand/bmark-icon.png')}
                   alt=""
-                  className="graffiti-only h-16 w-16 object-contain mix-blend-screen"
+                  className="h-16 w-16 object-contain"
                 />
               </div>
               <p className="headline text-[12px] text-bone">{g.name}</p>
-              <p className="hud-label mt-0.5 text-bolt">{g.rarity}</p>
+              <p className="hud-label mt-0.5 text-gold">{g.rarity}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-3 rounded-2xl border border-bone/12 bg-void/40 p-3">
+      <div className="relative mt-3 rounded-2xl border border-gold/20 bg-void/55 p-3">
         <div className="mb-3 flex items-center justify-between">
           <p className="headline text-sm text-bone">TUNE</p>
-          <button type="button" onClick={reset} className="hud-label text-bolt">
+          <button type="button" onClick={reset} className="hud-label text-gold">
             RESET
           </button>
         </div>
@@ -166,9 +165,9 @@ export default function Garage() {
         </div>
       </div>
 
-      <p className="hud-label mt-4 text-bolt">FLEET · {cat}</p>
-      <p className="mt-0.5 text-[11px] text-bone/45">Full catalog. Hoverboard and Segway are not classes.</p>
-      <div className="mt-2 grid grid-cols-2 gap-2">
+      <p className="relative hud-label mt-4 text-gold">FLEET · {cat}</p>
+      <p className="relative mt-0.5 text-[11px] text-bone/45">Full catalog. Hoverboard and Segway are not classes.</p>
+      <div className="relative mt-2 grid grid-cols-2 gap-2">
         {fleet.map((v) => {
           const on = v.id === vehicleId;
           return (
@@ -177,7 +176,7 @@ export default function Garage() {
               type="button"
               onClick={() => setVehicle(v.id)}
               className={`rounded-2xl border p-3 text-left ${
-                on ? 'border-bolt bg-bolt/15 shadow-bolt' : 'border-bone/10 bg-void/70'
+                on ? 'border-gold bg-gold/15 shadow-gold' : 'border-gold/15 bg-void/70'
               }`}
             >
               <p className="text-lg">{v.icon}</p>
@@ -200,7 +199,7 @@ function TuneSlider({ label, value, onChange, marks, active }) {
   return (
     <div className="px-1">
       <p className="font-display text-[9px] italic font-bold tracking-wide text-bone">{label}</p>
-      <p className="headline mt-0.5 text-[13px] text-bolt">{active}</p>
+      <p className="headline mt-0.5 text-[13px] text-gold">{active}</p>
       <input
         className="tune-range mt-2"
         type="range"
@@ -213,7 +212,7 @@ function TuneSlider({ label, value, onChange, marks, active }) {
       />
       <div className="mt-1 flex justify-between">
         {marks.map((m, i) => (
-          <span key={m} className={`font-mono text-[8px] ${i === value ? 'text-bolt' : 'text-bone/35'}`}>
+          <span key={m} className={`font-mono text-[8px] ${i === value ? 'text-gold' : 'text-bone/35'}`}>
             {m}
           </span>
         ))}
@@ -225,8 +224,8 @@ function TuneSlider({ label, value, onChange, marks, active }) {
 function RideArt() {
   return (
     <svg viewBox="0 0 320 150" className="absolute inset-0 h-full w-full" aria-hidden>
-      <ellipse cx="160" cy="128" rx="110" ry="10" fill="rgba(34,224,106,0.08)" />
-      <g fill="none" stroke="#22E06A" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
+      <ellipse cx="160" cy="128" rx="110" ry="10" fill="rgba(212,175,55,0.1)" />
+      <g fill="none" stroke="#D4AF37" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
         <circle cx="78" cy="108" r="26" />
         <circle cx="78" cy="108" r="10" />
         <circle cx="232" cy="108" r="28" />

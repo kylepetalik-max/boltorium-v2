@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-  base: "./",
+  base: process.env.VITE_BASE || '/boltorium-v2/',
   plugins: [react()],
   resolve: {
     alias: {

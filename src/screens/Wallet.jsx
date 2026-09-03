@@ -53,7 +53,7 @@ export default function Wallet() {
 
       <div className="relative flex flex-col items-center pr-8">
         <img
-          src={asset('brand/wordmark.png')}
+          src={asset('brand/logo-10.png')}
           alt="BOLTORIUM"
           className="graffiti-only h-12 w-[78%] object-contain drop-shadow-[0_0_16px_rgba(34,224,106,0.55)]"
         />
