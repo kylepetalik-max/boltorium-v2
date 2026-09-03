@@ -1,0 +1,36 @@
+{
+  "name": "@boltorium/striker",
+  "version": "0.1.0",
+  "description": "Boltorium Striker — defensive ride verification and anti-cheat (GPS + IMU fusion, per-vehicle profiles, Solana trace-hash handshake).",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "boltorium",
+    "striker",
+    "ride-verification",
+    "anti-cheat",
+    "gps",
+    "imu",
+    "solana"
+  ],
+  "author": "Kyle Petalik <kyleadmin@boltorium.co>",
+  "homepage": "https://boltorium.co",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "js-sha256": "^0.11.1"
+  }
+}

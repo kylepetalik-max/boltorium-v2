@@ -1,0 +1,10 @@
+{
+  "appId": "co.boltorium.v2",
+  "appName": "Boltorium",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "android": { "allowMixedContent": true },
+  "plugins": {
+    "SplashScreen": { "launchShowDuration": 0 }
+  }
+}

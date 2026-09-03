@@ -1,0 +1,37 @@
+{
+  "name": "boltorium-v2",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Boltorium v2 native app (Capacitor). Isolated from live boltorium.co.",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview --host",
+    "cap:sync": "vite build && cap sync"
+  },
+  "dependencies": {
+    "@boltorium/striker": "file:./packages/striker",
+    "@capacitor/android": "^6.2.2",
+    "@capacitor/app": "^6.0.3",
+    "@capacitor/cli": "^6.2.2",
+    "@capacitor/core": "^6.2.2",
+    "@capacitor/geolocation": "^6.1.1",
+    "@capacitor/haptics": "^6.0.3",
+    "@capacitor/ios": "^6.2.2",
+    "@capacitor/status-bar": "^6.0.3",
+    "js-sha256": "^0.11.1",
+    "leaflet": "^1.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-leaflet": "^4.2.1",
+    "react-router-dom": "^6.30.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.11"
+  }
+}
