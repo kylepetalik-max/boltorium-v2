@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useStore } from '../state/store.jsx';
 import { formatInt } from '../lib/format.js';
+import { asset } from '../lib/asset.js';
+
 
 const UNIT = {
   rides: '',
@@ -151,6 +153,6 @@ function KindIcon({ kind }) {
 
 function BTiny() {
   return (
-    <img src="/brand/b-mark.png" alt="" className="graffiti-only h-3.5 w-3.5 object-contain" />
+    <img src={asset('brand/b-mark.png')} alt="" className="graffiti-only h-3.5 w-3.5 object-contain" />
   );
 }

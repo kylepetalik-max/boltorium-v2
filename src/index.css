@@ -31,7 +31,7 @@ body,
 
 body {
   margin: 0;
-  font-family: Barlow, ui-sans-serif, system-ui, sans-serif;
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   overflow: hidden;
 }
 
@@ -49,14 +49,14 @@ body {
 }
 
 .hud-num {
-  font-family: Orbitron, ui-sans-serif, system-ui, sans-serif;
+  font-family: Rajdhani, Inter, ui-sans-serif, system-ui, sans-serif;
   font-weight: 800;
   letter-spacing: -0.04em;
   text-shadow: 0 0 18px rgba(212, 175, 55, 0.75), 0 0 42px rgba(34, 224, 106, 0.25);
 }
 
 .hud-label {
-  font-family: 'Share Tech Mono', ui-monospace, monospace;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   font-size: 0.62rem;
@@ -64,15 +64,15 @@ body {
 }
 
 .headline {
-  font-family: 'Permanent Marker', 'Sedgwick Ave', cursive;
-  font-weight: 400;
+  font-family: Syne, Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
   font-style: normal;
-  letter-spacing: 0.02em;
-  text-transform: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .tagline {
-  font-family: Audiowide, Orbitron, sans-serif;
+  font-family: Syne, Inter, sans-serif;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   background: linear-gradient(90deg, #38bdf8 0%, #8b5cf6 100%);
@@ -83,13 +83,13 @@ body {
 
 
 .handstyle {
-  font-family: 'Permanent Marker', 'Sedgwick Ave', cursive;
-  font-weight: 400;
+  font-family: Syne, Inter, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 800;
   font-style: normal;
   letter-spacing: 0.02em;
   text-transform: none;
-  color: var(--rtl-tag, #38BDF8);
-  transform: rotate(-3deg);
+  color: var(--gold, #D4AF37);
+  transform: none;
   text-shadow:
     0 0 8px rgba(56, 189, 248, 0.95),
     0 0 18px rgba(56, 189, 248, 0.65),
@@ -102,26 +102,26 @@ body {
 }
 
 .btn-bolt {
-  @apply flex h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-bolt text-void font-display italic font-extrabold uppercase tracking-wider text-lg shadow-bolt active:scale-[0.98] transition disabled:opacity-35;
+  @apply flex h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-bolt text-void font-display font-extrabold uppercase tracking-wider text-lg shadow-bolt active:scale-[0.98] transition disabled:opacity-35;
 }
 
 .btn-wallet,
 .auth-solana {
-  @apply flex h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-solana text-white font-display italic font-extrabold uppercase tracking-wider text-lg shadow-solana active:scale-[0.98] transition;
+  @apply flex h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-solana text-white font-display font-extrabold uppercase tracking-wider text-lg shadow-solana active:scale-[0.98] transition;
 }
 
 .btn-ghost,
 .auth-email {
-  @apply flex h-14 w-full items-center justify-center gap-2 rounded-[18px] border border-bolt bg-transparent text-bolt font-display italic font-extrabold uppercase tracking-wider text-lg active:scale-[0.98] transition;
+  @apply flex h-14 w-full items-center justify-center gap-2 rounded-[18px] border border-bolt bg-transparent text-bolt font-display font-extrabold uppercase tracking-wider text-lg active:scale-[0.98] transition;
 }
 
 .btn-google,
 .auth-google {
-  @apply flex h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-white text-black font-display italic font-extrabold uppercase tracking-wider text-lg active:scale-[0.98] transition;
+  @apply flex h-14 w-full items-center justify-center gap-2 rounded-[18px] bg-white text-black font-display font-extrabold uppercase tracking-wider text-lg active:scale-[0.98] transition;
 }
 
 .btn-danger {
-  @apply flex h-14 w-full items-center justify-center rounded-[18px] bg-danger text-white font-display italic font-extrabold uppercase tracking-widest text-lg shadow-danger active:scale-[0.98] transition;
+  @apply flex h-14 w-full items-center justify-center rounded-[18px] bg-danger text-white font-display font-extrabold uppercase tracking-widest text-lg shadow-danger active:scale-[0.98] transition;
 }
 
 .coin-pill {
@@ -144,15 +144,15 @@ body {
 }
 .dual-price .boltz {
   color: #22E06A;
-  font-family: 'Barlow Condensed', Impact, sans-serif;
-  font-style: italic;
+  font-family: Syne, Inter, sans-serif;
+  font-style: normal;
   font-weight: 800;
   text-transform: uppercase;
 }
 .dual-price .sol {
   color: #8B5CF6;
-  font-family: 'Barlow Condensed', Impact, sans-serif;
-  font-style: italic;
+  font-family: Syne, Inter, sans-serif;
+  font-style: normal;
   font-weight: 800;
   text-transform: uppercase;
 }
@@ -282,7 +282,7 @@ body {
 
 .leaflet-container {
   background: #080a09 !important;
-  font-family: Barlow, sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 .leaflet-control-attribution {
@@ -416,8 +416,8 @@ select {
 }
 
 .graffiti-balance {
-  font-family: 'Barlow Condensed', Impact, sans-serif;
-  font-style: italic;
+  font-family: Syne, Inter, sans-serif;
+  font-style: normal;
   font-weight: 800;
   letter-spacing: 0.02em;
   color: #22e06a;
@@ -436,5 +436,5 @@ select {
 }
 
 .btn-gold {
-  @apply flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-void font-display italic font-extrabold uppercase tracking-wider text-lg shadow-gold active:scale-[0.98] transition;
+  @apply flex h-14 w-full items-center justify-center gap-2 rounded-full bg-gold text-void font-display font-extrabold uppercase tracking-wider text-lg shadow-gold active:scale-[0.98] transition;
 }

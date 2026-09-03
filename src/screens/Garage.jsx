@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { listVehicles } from '../lib/vehicles.js';
 import { useStore } from '../state/store.jsx';
 import { formatInt } from '../lib/format.js';
+import { asset } from '../lib/asset.js';
+
 
 const CATALOG = listVehicles();
 const CATS = ['EUC', 'E-MOTO', 'SCOOTER', 'AIR'];
@@ -43,7 +45,7 @@ export default function Garage() {
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-5 pt-11">
-      <img src="/brand/garage-3d.png" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-55" />
+      <img src={asset('brand/garage-3d.png')} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-55" />
       <div className="pointer-events-none absolute inset-0 bg-void/45" />
 
       <header className="flex items-center justify-between gap-2 pr-10">
@@ -101,7 +103,7 @@ export default function Garage() {
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_80%,rgba(34,224,106,0.12),transparent_58%)]" />
           <RideArt />
           <img
-            src="/brand/b-mark.png"
+            src={asset('brand/b-mark.png')}
             alt=""
             className="graffiti-only pointer-events-none absolute bottom-2 left-1/2 h-16 w-16 -translate-x-1/2 object-contain mix-blend-screen"
           />
@@ -120,7 +122,7 @@ export default function Garage() {
             <div key={g.id} className="rounded-xl border border-bone/12 bg-void p-2">
               <div className="flex h-20 items-center justify-center">
                 <img
-                  src="/brand/b-mark.png"
+                  src={asset('brand/b-mark.png')}
                   alt=""
                   className="graffiti-only h-16 w-16 object-contain mix-blend-screen"
                 />

@@ -17,11 +17,11 @@ export default {
         danger: '#FF3B5C',
       },
       fontFamily: {
-        hud: ['Orbitron', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['"Barlow Condensed"', 'Impact', 'sans-serif'],
-        sans: ['Barlow', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        tag: ['Audiowide', 'Orbitron', 'sans-serif'],
-        mono: ['"Share Tech Mono"', 'ui-monospace', 'monospace'],
+        hud: ['Rajdhani', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Syne', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        tag: ['Syne', 'Inter', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       maxWidth: { phone: '430px' },
       boxShadow: {

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStore, DEMO_PUBKEY } from "../state/store.jsx";
+import { asset } from '../lib/asset.js';
+
 
 export default function Login() {
   const { login, onboarded } = useStore();
@@ -18,15 +20,15 @@ export default function Login() {
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-void">
-      <img src="/brand/auth-3d.png" alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <img src={asset('brand/auth-3d.png')} alt="" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-void/20 via-transparent to-void/75" />
 
       <button type="button" className="absolute right-3 top-10 z-20 h-10 w-16" onClick={skipDemo} aria-label="Skip">
-        <img src="/brand/skip-gold.png" alt="Skip" className="h-full w-full object-contain" />
+        <img src={asset('brand/skip-gold.png')} alt="Skip" className="h-full w-full object-contain" />
       </button>
 
       <div className="relative z-10 mt-16 flex flex-col items-center px-6">
-        <img src="/brand/logo-10.png" alt="BOLTORIUM" className="w-[88%] max-h-28 object-contain mix-blend-screen" />
+        <img src={asset('brand/logo-10.png')} alt="BOLTORIUM" className="w-[88%] max-h-28 object-contain" />
         <p className="mt-1 font-display text-[10px] font-bold tracking-[0.35em] text-gold/85">EST. 2023 · BLTRM</p>
       </div>
 

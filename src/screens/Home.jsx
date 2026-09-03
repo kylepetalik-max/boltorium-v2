@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useStore } from '../state/store.jsx';
 import { formatInt, formatKm } from '../lib/format.js';
 import { voltFromXp, crewRank } from '../lib/progress.js';
+import { asset } from '../lib/asset.js';
+
 
 export default function Home() {
   const nav = useNavigate();
@@ -14,7 +16,7 @@ export default function Home() {
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden">
       <img
-        src="/brand/home-3d.png"
+        src={asset('brand/home-3d.png')}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
       />

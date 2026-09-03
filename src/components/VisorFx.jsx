@@ -1,9 +1,10 @@
+import { asset } from '../lib/asset.js';
 export default function VisorFx({ children, photo = false }) {
   return (
     <div className="absolute inset-0 overflow-hidden">
       {photo && (
         <img
-          src="/brand/visor-splash.png"
+          src={asset('brand/visor-splash.png')}
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-80"
         />

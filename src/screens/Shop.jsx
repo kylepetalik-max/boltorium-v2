@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useStore } from '../state/store.jsx';
 import { formatInt } from '../lib/format.js';
+import { asset } from '../lib/asset.js';
+
 
 function solOf(item) {
   if (item.solPrice != null) return Number(item.solPrice).toFixed(2);
@@ -48,12 +50,12 @@ export default function Shop() {
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-4 pt-11">
-      <img src="/brand/market-3d.png" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40" />
+      <img src={asset('brand/market-3d.png')} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-40" />
       <div className="pointer-events-none absolute inset-0 bg-void/50" />
 
       <div className="flex items-center gap-2 pr-10">
         <img
-          src="/brand/splash-gold.png"
+          src={asset('brand/splash-gold.png')}
           alt=""
           className="graffiti-only h-10 w-24 object-contain object-left object-top mix-blend-screen"
         />
@@ -157,7 +159,7 @@ function ProductArt({ kind }) {
 function Mark() {
   return (
     <img
-      src="/brand/b-mark.png"
+      src={asset('brand/b-mark.png')}
       alt=""
       className="graffiti-only pointer-events-none absolute left-1/2 top-1/2 h-9 w-9 -translate-x-1/2 -translate-y-1/2 object-contain"
     />

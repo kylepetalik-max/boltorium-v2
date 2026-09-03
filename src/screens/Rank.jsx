@@ -2,6 +2,8 @@ import { useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../state/store.jsx';
 import { formatInt } from '../lib/format.js';
+import { asset } from '../lib/asset.js';
+
 
 export default function Rank() {
   const { crew, flagRank } = useStore();
@@ -33,13 +35,13 @@ export default function Rank() {
         </button>
         <div className="flex flex-col items-center">
           <img
-            src="/brand/wordmark.png"
+            src={asset('brand/wordmark.png')}
             alt="BOLTORIUM"
             className="graffiti-only h-8 object-contain"
           />
           <p className="hud-label mt-0.5 text-[8px] text-bone/60">★ BOLTZ ★</p>
         </div>
-        <img src="/brand/b-mark.png" alt="" className="graffiti-only h-9 w-9 object-contain" />
+        <img src={asset('brand/b-mark.png')} alt="" className="graffiti-only h-9 w-9 object-contain" />
       </div>
 
       <p className="headline mt-4 text-center text-3xl text-bolt">CREW RANK</p>
@@ -60,7 +62,7 @@ export default function Rank() {
             }`}
           >
             <span className="headline w-6 text-sm text-bone/50">#{i + 4}</span>
-            <img src="/brand/b-mark.png" alt="" className="graffiti-only h-6 w-6 object-contain" />
+            <img src={asset('brand/b-mark.png')} alt="" className="graffiti-only h-6 w-6 object-contain" />
             <p className="headline flex-1 text-sm">{r.name}</p>
             <p className="font-hud text-xs text-bolt">{r.km.toFixed(1)} KM</p>
           </div>
@@ -74,7 +76,7 @@ export default function Rank() {
           </span>
           <div className="mt-2 flex items-center gap-3">
             <p className="headline text-2xl text-cyan">#{youPlace}</p>
-            <img src="/brand/b-mark.png" alt="" className="graffiti-only h-10 w-10 object-contain" />
+            <img src={asset('brand/b-mark.png')} alt="" className="graffiti-only h-10 w-10 object-contain" />
             <div className="min-w-0 flex-1">
               <p className="headline text-base">{you.name}</p>
               <p className="font-hud text-xs text-bolt">
@@ -101,7 +103,7 @@ function PodiumSlot({ rider, place, size, color }) {
         className={`flex ${dim} items-center justify-center rounded-full border-2 podium-glow`}
         style={{ borderColor: color, boxShadow: `0 0 22px ${color}88` }}
       >
-        <img src="/brand/b-mark.png" alt="" className="graffiti-only h-[70%] w-[70%] object-contain" />
+        <img src={asset('brand/b-mark.png')} alt="" className="graffiti-only h-[70%] w-[70%] object-contain" />
       </div>
       <p className="headline mt-2 text-center text-[11px] leading-tight text-bone">
         {rider.name}

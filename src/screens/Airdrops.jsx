@@ -2,6 +2,8 @@ import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../state/store.jsx';
 import { haversineMeters } from '../lib/format.js';
+import { asset } from '../lib/asset.js';
+
 
 const CLAIM_RANGE_M = 20;
 
@@ -46,7 +48,7 @@ export default function Airdrops() {
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden">
       <img
-        src="/brand/visor-splash.png"
+        src={asset('brand/visor-splash.png')}
         alt=""
         className="absolute inset-0 h-full w-full object-cover"
       />

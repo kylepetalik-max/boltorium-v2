@@ -1,3 +1,4 @@
+import { asset } from '../lib/asset.js';
 export default function BMark({ className = 'w-10 h-10', glow = true }) {
   return (
     <svg
@@ -33,7 +34,7 @@ export default function BMark({ className = 'w-10 h-10', glow = true }) {
 export function GraffitiB({ className = 'h-9' }) {
   return (
     <img
-      src="/brand/bmark-icon.png"
+      src={asset('brand/bmark-icon.png')}
       alt="B"
       className={`${className} graffiti-only object-contain`}
     />

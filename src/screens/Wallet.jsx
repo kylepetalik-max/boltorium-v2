@@ -1,6 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useStore } from '../state/store.jsx';
 import { formatAgo, formatInt, shortHash } from '../lib/format.js';
+import { asset } from '../lib/asset.js';
+
 
 export default function Wallet() {
   const { boltz, demoPubkey, lastTraceHash, lastVerify, rides, drops, claimedDrops } = useStore();
@@ -51,7 +53,7 @@ export default function Wallet() {
 
       <div className="relative flex flex-col items-center pr-8">
         <img
-          src="/brand/wordmark.png"
+          src={asset('brand/wordmark.png')}
           alt="BOLTORIUM"
           className="graffiti-only h-12 w-[78%] object-contain drop-shadow-[0_0_16px_rgba(34,224,106,0.55)]"
         />

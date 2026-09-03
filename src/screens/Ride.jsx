@@ -4,6 +4,8 @@ import NeonMap from '../components/NeonMap.jsx';
 import { useStore } from '../state/store.jsx';
 import { formatDuration, formatKm, formatInt, haversineMeters } from '../lib/format.js';
 import { earnMultiplier } from '../lib/vehicles.js';
+import { asset } from '../lib/asset.js';
+
 
 const CHECKS = [
   { id: 'helmet', t: 'I will wear a helmet' },
@@ -109,7 +111,7 @@ export default function Ride() {
     return (
       <div className="flex min-h-0 flex-1 flex-col px-4 pb-6 pt-12" onClick={toggleGlance}>
         <header className="flex items-center justify-between">
-          <img src="/brand/logo-10.png" alt="" className="graffiti-only h-9 w-9 object-contain" />
+          <img src={asset('brand/logo-10.png')} alt="" className="graffiti-only h-9 w-9 object-contain" />
           <p className="headline text-lg text-gold">LIVE RIDE</p>
           <p className="hud-label text-danger pulse-live">● LIVE</p>
         </header>
@@ -150,12 +152,12 @@ export default function Ride() {
       <div className="absolute inset-0">
         <NeonMap live={live} ghost={ghost} drops={openDrops} />
       </div>
-      <img src="/brand/hud-3d.png" alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-screen" />
+      <img src={asset('brand/hud-3d.png')} alt="" className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-35 mix-blend-screen" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/55 via-transparent to-void/88" />
 
       <header className="pointer-events-auto relative z-10 flex items-center justify-between px-4 pt-12">
         <img
-          src="/brand/logo-10.png"
+          src={asset('brand/logo-10.png')}
           alt=""
           className="graffiti-only h-10 w-10 object-contain drop-shadow-[0_0_12px_rgba(34,224,106,0.7)]"
         />
