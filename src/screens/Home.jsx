@@ -12,59 +12,89 @@ export default function Home() {
   const volt = voltFromXp(xp);
   const km = rides.reduce((n, r) => n + (r.distanceM || 0), 0);
   const rank = useMemo(() => crewRank(crew), [crew]);
+  const recent = rides.slice(0, 3);
 
   return (
-    <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden">
-      <VaultBg src="brand/home-3d.png" opacity={0.16} blur={20} />
-      <div className="vault-hex pointer-events-none absolute inset-0 z-[1]" />
+    <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto">
+      <VaultBg src="brand/home-3d.png" opacity={0.18} blur={16} />
       <div className="plasma-sparks z-[1]" aria-hidden>
         <span /><span /><span /><span /><span />
       </div>
 
-      <div className="relative z-[2] flex min-h-0 flex-1 flex-col items-center px-5 pb-5 pt-11">
-        <img
-          src={asset('brand/logo-10.png')}
-          alt="BOLTORIUM"
-          className="logo-float-soft h-[4.5rem] w-[78%] max-w-[300px] object-contain"
-        />
-        <p className="mt-1.5 font-display text-[10px] font-bold tracking-[0.4em] text-gold/80">
-          EST. 2023 · BLTRM
-        </p>
-
-        <button
-          type="button"
-          onClick={() => nav('/wallet')}
-          className="boltz-pill mt-9 flex w-[86%] max-w-sm flex-col items-center justify-center rounded-[999px] px-6 py-5 active:scale-[0.98]"
-        >
-          <span className="hud-label relative z-[1] text-[10px] text-void/65">BOLTZ</span>
-          <span className="relative z-[1] font-hud text-4xl font-extrabold leading-none text-void">
-            {formatInt(boltz)} <span className="text-xl">BZ</span>
-          </span>
-        </button>
-
-        <div className="mt-8 flex flex-1 flex-col items-center justify-center">
+      <div className="relative z-[2] flex min-h-0 flex-1 flex-col px-4 pb-4 pt-10">
+        <div className="flex items-center justify-between gap-2 pr-8">
+          <img
+            src={asset('brand/boltorium-graffiti-v1.png')}
+            alt="BOLTORIUM"
+            className="h-11 w-[58%] max-w-[220px] object-contain object-left"
+          />
           <button
             type="button"
-            aria-label="Start ride"
-            onClick={() => nav('/ride')}
-            className="ignition-orb relative flex h-[7.5rem] w-[7.5rem] items-center justify-center rounded-full bg-[radial-gradient(circle_at_45%_35%,#9AFF5A_0%,#22E06A_28%,#146b22_58%,#041108_100%)] active:scale-[0.96]"
+            onClick={() => nav('/wallet')}
+            className="coin-pill shrink-0"
           >
-            <span className="ignition-core-rim" />
-            <span className="ignition-ring ignition-ring-1" />
-            <span className="ignition-ring ignition-ring-2" />
-            <span className="ignition-ring ignition-ring-3" />
-            <span className="relative z-[1] font-display text-center text-[14px] font-extrabold uppercase leading-tight tracking-[0.12em] text-gold drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]">
-              START
-              <br />
-              RIDE
-            </span>
+            ⚡ {formatInt(boltz)}
+          </button>
+        </div>
+        <p className="tagline mt-1 text-[9px]">Ride the Lightning</p>
+
+        <div className="mt-4 grid grid-cols-2 gap-2">
+          <button
+            type="button"
+            onClick={() => nav('/ride')}
+            className="cv-card flex flex-col items-start p-4 text-left active:scale-[0.98]"
+          >
+            <p className="hud-label text-bolt">Ignition</p>
+            <p className="headline mt-1 text-xl text-bone">START RIDE</p>
+            <p className="mt-1 text-[11px] text-bone/50">Safety gate → GPS HUD</p>
+          </button>
+          <button
+            type="button"
+            onClick={() => nav('/missions')}
+            className="holo-card flex flex-col items-start rounded-2xl p-4 text-left"
+          >
+            <p className="hud-label text-cyan">Missions</p>
+            <p className="headline mt-1 text-lg text-bone">WEEKLY</p>
+            <p className="mt-1 text-[11px] text-bone/50">Teaser · open board</p>
           </button>
         </div>
 
-        <div className="mb-1 grid w-full grid-cols-3 gap-2.5">
-          <Holo k="SPARK" v={`${volt.name} LVL ${volt.level}`} onClick={() => nav('/rank')} />
+        <div className="mt-3 grid grid-cols-3 gap-2">
+          <Holo k="SPARK" v={`${volt.name} L${volt.level}`} onClick={() => nav('/rank')} />
           <Holo k="RANK" v={`#${rank.place}`} onClick={() => nav('/rank')} />
           <Holo k={vehicle.label.toUpperCase()} v={`${formatKm(km)} KM`} onClick={() => nav('/garage')} />
+        </div>
+
+        <div className="mt-4 rounded-2xl border border-white/10 bg-void/55 p-3">
+          <div className="flex items-center justify-between">
+            <p className="headline text-sm text-bone">ACTIVITY</p>
+            <button type="button" onClick={() => nav('/feed')} className="hud-label text-cyan">
+              FEED
+            </button>
+          </div>
+          {recent.length === 0 ? (
+            <p className="mt-2 text-sm text-bone/45">No rides yet — hit Start Ride and charge up.</p>
+          ) : (
+            <ul className="mt-2 space-y-1.5">
+              {recent.map((r) => (
+                <li key={r.id} className="flex items-center justify-between rounded-xl bg-white/5 px-2.5 py-2 text-sm">
+                  <span className="text-bone/80">{formatKm(r.distanceM || 0)} km</span>
+                  <span className="font-hud font-bold text-bolt">+{formatInt(r.awarded || 0)} BZ</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <div className="mt-3 grid grid-cols-2 gap-2">
+          <button type="button" onClick={() => nav('/garage')} className="holo-card rounded-2xl p-3 text-left">
+            <p className="hud-label text-cyan">Garage</p>
+            <p className="headline mt-1 text-bone">{vehicle.label}</p>
+          </button>
+          <button type="button" onClick={() => nav('/shop')} className="holo-card rounded-2xl p-3 text-left">
+            <p className="hud-label text-solana">Shop</p>
+            <p className="headline mt-1 text-bone">Marketplace</p>
+          </button>
         </div>
       </div>
     </div>
@@ -74,8 +104,8 @@ export default function Home() {
 function Holo({ k, v, onClick }) {
   return (
     <button type="button" onClick={onClick} className="holo-card rounded-2xl px-2.5 py-3 text-left">
-      <p className="hud-label text-[8px] text-gold/80">{k}</p>
-      <p className="headline mt-1 text-[13px] leading-none text-gold">{v}</p>
+      <p className="hud-label text-[8px] text-cyan/80">{k}</p>
+      <p className="headline mt-1 text-[13px] leading-none text-bolt">{v}</p>
     </button>
   );
 }

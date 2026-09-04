@@ -1,8 +1,12 @@
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import PhoneShell from './components/PhoneShell.jsx';
 import { useStore } from './state/store.jsx';
 import { startVoice, speak } from './lib/voice.js';
+import MarketingHome from './pages/MarketingHome.jsx';
+import HowItWorks from './pages/HowItWorks.jsx';
+import Ecosystem from './pages/Ecosystem.jsx';
+import Roadmap from './pages/Roadmap.jsx';
 import Splash from './screens/Splash.jsx';
 import Login from './screens/Login.jsx';
 import Onboarding from './screens/Onboarding.jsx';
@@ -20,12 +24,20 @@ import Profile from './screens/Profile.jsx';
 import Airdrops from './screens/Airdrops.jsx';
 import Feed from './screens/Feed.jsx';
 
+const MARKETING = new Set(['/', '/how-it-works', '/ecosystem', '/roadmap']);
+
 function Gate({ children }) {
   const { hydrated, user, onboarded } = useStore();
   if (!hydrated) return <div className="flex flex-1 items-center justify-center text-bolt">…</div>;
   if (!user) return <Navigate to="/login" replace />;
   if (!onboarded) return <Navigate to="/onboarding" replace />;
   return children;
+}
+
+function AppChrome({ children }) {
+  const loc = useLocation();
+  if (MARKETING.has(loc.pathname)) return children;
+  return <PhoneShell>{children}</PhoneShell>;
 }
 
 export default function App() {
@@ -53,9 +65,13 @@ export default function App() {
   }, [store.user, store.ride?.id]);
 
   return (
-    <PhoneShell>
+    <AppChrome>
       <Routes>
-        <Route path="/" element={<Splash />} />
+        <Route path="/" element={<MarketingHome />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/ecosystem" element={<Ecosystem />} />
+        <Route path="/roadmap" element={<Roadmap />} />
+        <Route path="/app" element={<Splash />} />
         <Route path="/login" element={<Login />} />
         <Route path="/onboarding" element={<Onboarding />} />
         <Route path="/home" element={<Gate><Home /></Gate>} />
@@ -73,6 +89,6 @@ export default function App() {
         <Route path="/feed" element={<Gate><Feed /></Gate>} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </PhoneShell>
+    </AppChrome>
   );
 }

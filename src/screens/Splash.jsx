@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HeroVideo from '../components/HeroVideo.jsx';
 import { useStore } from '../state/store.jsx';
 import { asset } from '../lib/asset.js';
@@ -15,24 +15,21 @@ export default function Splash() {
   };
 
   return (
-    <div
-      className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-void"
-      onClick={go}
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') go(e);
-      }}
-    >
+    <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-void">
       <HeroVideo />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/50 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/55 via-transparent to-void/90" />
       <div className="splash-bottom-fade pointer-events-none absolute inset-x-0 bottom-0 h-[42%]" />
-      <div className="vault-vignette pointer-events-none absolute inset-0 opacity-80" />
+      <div className="vault-vignette pointer-events-none absolute inset-0 opacity-70" />
 
       <img
-        src={asset('brand/logo-10.png')}
+        src={asset('brand/boltorium-graffiti-v1.png')}
         alt="BOLTORIUM"
-        className="logo-float pointer-events-none absolute inset-x-0 top-[14%] z-10 mx-auto w-[96%] max-h-[52%] object-contain"
+        className="logo-float pointer-events-none absolute inset-x-0 top-[12%] z-10 mx-auto w-[88%] max-h-[38%] object-contain"
+      />
+      <img
+        src={asset('brand/kyle-rtl-mark.png')}
+        alt=""
+        className="pointer-events-none absolute inset-x-0 top-[48%] z-10 mx-auto w-[70%] max-h-[16%] object-contain opacity-90"
       />
 
       <button
@@ -44,11 +41,14 @@ export default function Splash() {
         Skip
       </button>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-10 z-10 flex flex-col items-center px-6">
-        <p className="font-display text-[10px] font-bold tracking-[0.48em] text-gold/85">
-          EST. 2023 · BLTRM
-        </p>
-        <p className="mt-2 font-mono text-[9px] tracking-[0.28em] text-bone/35">TAP TO ENTER</p>
+      <div className="absolute inset-x-0 bottom-8 z-10 flex flex-col items-center gap-3 px-6">
+        <p className="tagline text-[10px]">Ride the Lightning</p>
+        <button type="button" className="btn-bolt !rounded-full" onClick={go}>
+          Enter
+        </button>
+        <Link to="/" className="font-mono text-[9px] tracking-[0.28em] text-bone/40">
+          ← MARKETING SITE
+        </Link>
       </div>
     </div>
   );

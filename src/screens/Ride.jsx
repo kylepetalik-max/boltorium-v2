@@ -13,15 +13,15 @@ const CHECKS = [
   { id: 'age', t: 'I am 16 years of age or older' },
 ];
 
-function GoldFrame() {
+function HudFrame() {
   return (
     <div className="pointer-events-none absolute inset-3 z-20" aria-hidden>
-      <span className="gold-corner gold-corner-tl" />
-      <span className="gold-corner gold-corner-tr" />
-      <span className="gold-corner gold-corner-bl" />
-      <span className="gold-corner gold-corner-br" />
-      <span className="gold-hud-tick absolute left-1/2 top-2 h-1 w-8 -translate-x-1/2 rounded-full bg-gold/70 shadow-gold" />
-      <span className="gold-hud-tick absolute bottom-2 left-1/2 h-1 w-8 -translate-x-1/2 rounded-full bg-gold/70 shadow-gold" />
+      <span className="hud-corner hud-corner-tl" />
+      <span className="hud-corner hud-corner-tr" />
+      <span className="hud-corner hud-corner-bl" />
+      <span className="hud-corner hud-corner-br" />
+      <span className="hud-tick absolute left-1/2 top-2 h-1 w-8 -translate-x-1/2 rounded-full bg-bolt/70 shadow-bolt" />
+      <span className="hud-tick absolute bottom-2 left-1/2 h-1 w-8 -translate-x-1/2 rounded-full bg-bolt/70 shadow-bolt" />
     </div>
   );
 }
@@ -34,8 +34,8 @@ function SafetyGate({ onGo }) {
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto px-5 pb-8 pt-14">
       <div className="vault-bg pointer-events-none absolute inset-0" />
-      <p className="relative hud-label text-gold">PRE-RIDE · SAFETY GATE</p>
-      <h1 className="headline relative mt-2 text-4xl text-gold">HOLD.</h1>
+      <p className="relative hud-label text-bolt">PRE-RIDE · SAFETY GATE</p>
+      <h1 className="headline relative mt-2 text-4xl text-bolt">HOLD.</h1>
       <p className="relative mt-2 text-sm text-bone/60">
         The ride will not start until every line is accepted. This is not optional.
       </p>
@@ -45,12 +45,12 @@ function SafetyGate({ onGo }) {
             key={c.id}
             onClick={() => toggle(c.id)}
             className={`flex w-full items-start gap-3 rounded-2xl border p-3 text-left transition ${
-              ok[c.id] ? 'border-gold/70 bg-gold/12 shadow-gold' : 'holo-card border-transparent'
+              ok[c.id] ? 'border-bolt/70 bg-bolt/12 shadow-bolt' : 'holo-card border-transparent'
             }`}
           >
             <span
               className={`mt-0.5 flex h-5 w-5 items-center justify-center rounded border ${
-                ok[c.id] ? 'border-gold bg-gold text-void' : 'border-gold/30'
+                ok[c.id] ? 'border-bolt bg-bolt text-void' : 'border-bolt/30'
               }`}
             >
               {ok[c.id] ? '✓' : ''}
@@ -59,7 +59,7 @@ function SafetyGate({ onGo }) {
           </button>
         ))}
       </div>
-      <button className="btn-gold relative mt-auto" disabled={!all} style={{ opacity: all ? 1 : 0.35 }} onClick={onGo}>
+      <button className="btn-bolt relative mt-auto" disabled={!all} style={{ opacity: all ? 1 : 0.35 }} onClick={onGo}>
         {all ? 'START RIDE' : 'ACCEPT ALL TO START'}
       </button>
     </div>
@@ -124,10 +124,10 @@ export default function Ride() {
     return (
       <div className="relative flex min-h-0 flex-1 flex-col px-4 pb-6 pt-12" onClick={toggleGlance}>
         <div className="vault-bg pointer-events-none absolute inset-0" />
-        <GoldFrame />
+        <HudFrame />
         <header className="relative z-10 flex items-center justify-between">
-          <img src={asset('brand/logo-10.png')} alt="" className="h-9 w-auto max-w-[7rem] object-contain" />
-          <p className="headline text-lg text-gold">LIVE RIDE</p>
+          <img src={asset('brand/boltorium-graffiti-v1.png')} alt="" className="h-9 w-auto max-w-[7rem] object-contain" />
+          <p className="headline text-lg text-bolt">LIVE RIDE</p>
           <p className="hud-label text-danger pulse-live">● LIVE</p>
         </header>
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center">
@@ -135,7 +135,7 @@ export default function Ride() {
           {uncertain ? (
             <p className="headline text-5xl text-cyan">UNCERTAIN</p>
           ) : (
-            <p className="hud-num speed-blur text-8xl text-gold" data-speed={speedText}>
+            <p className="hud-num speed-blur text-8xl text-bolt" data-speed={speedText}>
               {speedText}
             </p>
           )}
@@ -168,15 +168,15 @@ export default function Ride() {
         <NeonMap live={live} ghost={ghost} drops={openDrops} />
       </div>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/55 via-transparent to-void/88" />
-      <GoldFrame />
+      <HudFrame />
 
       <header className="pointer-events-auto relative z-10 flex items-center justify-between px-4 pt-12">
         <img
-          src={asset('brand/logo-10.png')}
+          src={asset('brand/boltorium-graffiti-v1.png')}
           alt=""
           className="h-10 w-auto max-w-[7.5rem] object-contain drop-shadow-[0_0_12px_rgba(212,175,55,0.7)]"
         />
-        <p className="headline text-xl text-gold">LIVE RIDE</p>
+        <p className="headline text-xl text-bolt">LIVE RIDE</p>
         <p className="hud-label text-danger pulse-live">● LIVE</p>
       </header>
 
@@ -185,7 +185,7 @@ export default function Ride() {
           {uncertain ? (
             <p className="headline text-[42px] leading-none text-cyan">UNCERTAIN</p>
           ) : (
-            <p className="hud-num speed-blur text-[86px] leading-none text-gold" data-speed={speedText}>
+            <p className="hud-num speed-blur text-[86px] leading-none text-bolt" data-speed={speedText}>
               {speedText}
             </p>
           )}
@@ -197,7 +197,7 @@ export default function Ride() {
       <div className="relative z-10 mt-2 flex items-start justify-between px-5">
         <div>
           <p className="hud-label text-bone">COMBO</p>
-          <p className="headline text-[44px] leading-none text-gold drop-shadow-[0_0_18px_rgba(212,175,55,0.85)]">
+          <p className="headline text-[44px] leading-none text-bolt drop-shadow-[0_0_18px_rgba(34,224,106,0.85)]">
             x{combo.toFixed(1)}
           </p>
         </div>
@@ -207,11 +207,11 @@ export default function Ride() {
           <div className="mt-3 flex flex-col items-end">
             <div className="relative flex h-14 w-14 items-center justify-center">
               <span className="radar-ring" />
-              <span className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-gold bg-void shadow-gold">
+              <span className="relative flex h-10 w-10 items-center justify-center rounded-full border-2 border-bolt bg-void shadow-bolt">
                 <Chute />
               </span>
             </div>
-            <p className="hud-label mt-1 text-[9px] text-gold">AIRDROP {pingLabel}</p>
+            <p className="hud-label mt-1 text-[9px] text-bolt">AIRDROP {pingLabel}</p>
           </div>
         </div>
       </div>
@@ -238,9 +238,9 @@ export default function Ride() {
 function Stat({ k, v, icon }) {
   return (
     <div className="text-center">
-      {icon ? <div className="mb-0.5 flex justify-center text-gold">{icon}</div> : null}
+      {icon ? <div className="mb-0.5 flex justify-center text-bolt">{icon}</div> : null}
       <p className="hud-label text-[8px]">{k}</p>
-      <p className="font-hud text-[11px] text-gold">{v}</p>
+      <p className="font-hud text-[11px] text-bolt">{v}</p>
     </div>
   );
 }

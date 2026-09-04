@@ -35,7 +35,7 @@ export default function Rank() {
         </button>
         <div className="flex flex-col items-center">
           <img
-            src={asset('brand/logo-10.png')}
+            src={asset('brand/boltorium-graffiti-v1.png')}
             alt="BOLTORIUM"
             className="graffiti-only h-8 object-contain"
           />

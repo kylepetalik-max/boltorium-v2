@@ -54,11 +54,11 @@ export default function Shop() {
 
       <div className="relative flex items-center gap-2 pr-10">
         <img
-          src={asset('brand/logo-10.png')}
+          src={asset('brand/boltorium-graffiti-v1.png')}
           alt=""
           className="h-10 w-24 object-contain object-left"
         />
-        <p className="headline text-2xl text-gold">MARKETPLACE</p>
+        <p className="headline text-2xl text-bolt">MARKETPLACE</p>
       </div>
 
       <div className="glass relative mt-4 flex rounded-full p-1">
@@ -66,7 +66,7 @@ export default function Shop() {
           type="button"
           onClick={() => setTab('official')}
           className={`flex-1 rounded-full py-1.5 font-display text-sm font-extrabold tracking-wider transition ${
-            tab === 'official' ? 'metal-gold shadow-gold' : 'text-bone/70'
+            tab === 'official' ? 'bg-bolt text-void shadow-bolt' : 'text-bone/70'
           }`}
         >
           OFFICIAL
@@ -75,7 +75,7 @@ export default function Shop() {
           type="button"
           onClick={() => setTab('p2p')}
           className={`flex-1 rounded-full py-1.5 font-display text-sm font-extrabold tracking-wider transition ${
-            tab === 'p2p' ? 'metal-gold shadow-gold' : 'text-bone/70'
+            tab === 'p2p' ? 'bg-bolt text-void shadow-bolt' : 'text-bone/70'
           }`}
         >
           P2P
@@ -83,7 +83,7 @@ export default function Shop() {
       </div>
 
       <div className="relative mt-3 flex items-center gap-2">
-        <label className="flex min-w-0 flex-1 items-center gap-2 rounded-full border border-gold/25 bg-void/70 px-3 py-2">
+        <label className="flex min-w-0 flex-1 items-center gap-2 rounded-full border border-cyan/30 bg-void/70 px-3 py-2">
           <SearchIcon />
           <input
             value={q}
@@ -92,23 +92,23 @@ export default function Shop() {
             className="min-w-0 flex-1 bg-transparent text-sm text-bone outline-none placeholder:text-bone/35"
           />
         </label>
-        <span className="hud-label text-gold">FILTER</span>
+        <span className="hud-label text-bolt">FILTER</span>
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="rounded-full border border-gold/25 bg-void/70 px-2 py-2 font-mono text-[10px] text-bone/80 outline-none"
+          className="rounded-full border border-cyan/30 bg-void/70 px-2 py-2 font-mono text-[10px] text-bone/80 outline-none"
         >
           <option value="newest">Newest</option>
           <option value="price">Price</option>
         </select>
       </div>
 
-      <p className="relative mt-3 font-mono text-[10px] text-gold/70">BALANCE {formatInt(boltz)} BZ</p>
+      <p className="relative mt-3 font-mono text-[10px] text-bolt/70">BALANCE {formatInt(boltz)} BZ</p>
 
       <div className="relative mt-3 grid grid-cols-2 gap-2.5">
         {items.map((item) => (
-          <div key={item.id} className="gold-card overflow-hidden p-2.5">
-            <p className="hud-label text-[8px] text-gold">{item.kind}</p>
+          <div key={item.id} className="cv-card overflow-hidden p-2.5">
+            <p className="hud-label text-[8px] text-bolt">{item.kind}</p>
             <div className="mt-1 flex h-28 items-center justify-center rounded-xl bg-gradient-to-b from-[#161a17] to-[#080A09]">
               <ProductArt kind={item.kind} />
             </div>
@@ -124,7 +124,7 @@ export default function Shop() {
               type="button"
               disabled={boltz < item.price}
               onClick={() => buy(item.id)}
-              className="btn-gold mt-2 !h-9 w-full !rounded-lg !text-xs disabled:opacity-30"
+              className="btn-bolt mt-2 !h-9 w-full !rounded-lg !text-xs disabled:opacity-30"
             >
               {boltz < item.price ? 'NEED BZ' : 'BUY'}
             </button>
@@ -140,7 +140,7 @@ export default function Shop() {
 
 function SearchIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.8" aria-hidden>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22E06A" strokeWidth="1.8" aria-hidden>
       <circle cx="11" cy="11" r="7" />
       <path d="M16 16 L21 21" />
     </svg>
@@ -203,10 +203,10 @@ function GloveArt() {
 function BatteryArt() {
   return (
     <div className="relative">
-      <svg viewBox="0 0 64 64" className="h-16 w-16 text-gold" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+      <svg viewBox="0 0 64 64" className="h-16 w-16 text-bolt" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
         <rect x="14" y="18" width="32" height="28" rx="4" />
         <path d="M46 26 h4 v12 h-4" />
-        <path d="M28 24 L22 34 h8 l-4 10 12-14 h-8 z" fill="#D4AF37" stroke="none" />
+        <path d="M28 24 L22 34 h8 l-4 10 12-14 h-8 z" fill="#22E06A" stroke="none" />
       </svg>
       <Mark />
     </div>
@@ -216,7 +216,7 @@ function BatteryArt() {
 function GearArt() {
   return (
     <div className="relative">
-      <svg viewBox="0 0 64 64" className="h-16 w-16 text-gold" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+      <svg viewBox="0 0 64 64" className="h-16 w-16 text-bolt" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
         <circle cx="32" cy="32" r="10" />
         <path d="M32 14 v6 M32 44 v6 M14 32 h6 M44 32 h6 M20 20 l4 4 M40 40 l4 4 M44 20 l-4 4 M24 40 l-4 4" />
       </svg>

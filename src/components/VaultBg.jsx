@@ -1,10 +1,9 @@
 import { asset } from '../lib/asset.js';
 
 /**
- * Dark gold vault atmosphere. Optional mock PNG is heavily faded/blurred
- * so baked fake UI never doubles real chrome.
+ * Plasma / neon atmosphere (cyan→violet + bolt). Gold vault haze removed.
  */
-export default function VaultBg({ src, opacity = 0.12, blur = 14 }) {
+export default function VaultBg({ src, opacity = 0.14, blur = 14 }) {
   return (
     <>
       <div className="vault-bg pointer-events-none absolute inset-0" />
@@ -13,13 +12,13 @@ export default function VaultBg({ src, opacity = 0.12, blur = 14 }) {
           src={src.startsWith('http') || src.startsWith('/') || src.startsWith('.') ? src : asset(src)}
           alt=""
           className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-          style={{ opacity, filter: `blur(${blur}px) saturate(0.7) brightness(0.7)` }}
+          style={{ opacity, filter: `blur(${blur}px) saturate(0.85) brightness(0.65)` }}
         />
       ) : null}
       <div className="vault-grid pointer-events-none absolute inset-0" />
       <div className="vault-hex pointer-events-none absolute inset-0" />
       <div className="vault-vignette pointer-events-none absolute inset-0" />
-      <div className="vault-gold-haze pointer-events-none absolute inset-0" />
+      <div className="vault-plasma-haze pointer-events-none absolute inset-0" />
     </>
   );
 }

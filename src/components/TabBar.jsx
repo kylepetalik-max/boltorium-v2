@@ -32,7 +32,7 @@ export default function TabBar() {
               <span className="tab-ride-btn flex h-14 w-14 items-center justify-center rounded-full">
                 <BMark className="h-8 w-8" />
               </span>
-              <span className="hud-label mt-1 text-[9px] text-gold">{ride ? 'LIVE' : 'RIDE'}</span>
+              <span className="hud-label mt-1 text-[9px] text-bolt">{ride ? 'LIVE' : 'RIDE'}</span>
             </button>
           );
         }
