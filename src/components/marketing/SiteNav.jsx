@@ -73,7 +73,7 @@ export default function SiteNav() {
             Learn
           </Link>
           <Link
-            to="/login"
+            to="/app"
             className="inline-flex rounded-full bg-bolt px-3.5 py-1.5 font-display text-[11px] font-extrabold uppercase tracking-wider text-void shadow-bolt"
           >
             Enter App

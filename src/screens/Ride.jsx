@@ -33,9 +33,8 @@ function SafetyGate({ onGo }) {
 
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto px-5 pb-8 pt-14">
-      <div className="vault-bg pointer-events-none absolute inset-0" />
-      <p className="relative hud-label text-bolt">PRE-RIDE · SAFETY GATE</p>
-      <h1 className="headline relative mt-2 text-4xl text-bolt">HOLD.</h1>
+      <p className="relative hud-label text-bone/55">PRE-RIDE · SAFETY GATE</p>
+      <h1 className="relative mt-2 font-display text-4xl font-extrabold italic uppercase text-bone">HOLD.</h1>
       <p className="relative mt-2 text-sm text-bone/60">
         The ride will not start until every line is accepted. This is not optional.
       </p>
@@ -123,8 +122,7 @@ export default function Ride() {
   if (ride.glance) {
     return (
       <div className="relative flex min-h-0 flex-1 flex-col px-4 pb-6 pt-12" onClick={toggleGlance}>
-        <div className="vault-bg pointer-events-none absolute inset-0" />
-        <HudFrame />
+          <HudFrame />
         <header className="relative z-10 flex items-center justify-between">
           <img src={asset('brand/boltorium-graffiti-v1.png')} alt="" className="h-9 w-auto max-w-[7rem] object-contain" />
           <p className="headline text-lg text-bolt">LIVE RIDE</p>
@@ -174,7 +172,7 @@ export default function Ride() {
         <img
           src={asset('brand/boltorium-graffiti-v1.png')}
           alt=""
-          className="h-10 w-auto max-w-[7.5rem] object-contain drop-shadow-[0_0_12px_rgba(212,175,55,0.7)]"
+          className="h-10 w-auto max-w-[7.5rem] object-contain drop-shadow-[0_0_12px_rgba(34,224,106,0.55)]"
         />
         <p className="headline text-xl text-bolt">LIVE RIDE</p>
         <p className="hud-label text-danger pulse-live">● LIVE</p>
@@ -247,7 +245,7 @@ function Stat({ k, v, icon }) {
 
 function Chute() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" strokeWidth="1.8" aria-hidden>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22E06A" strokeWidth="1.8" aria-hidden>
       <path d="M4 10c0-5 3.2-8 8-8s8 3 8 8" />
       <path d="M4 10h16 M6 10 12 20 18 10" />
     </svg>

@@ -23,7 +23,7 @@ export default function SiteFooter() {
               <li><Link to="/how-it-works" className="hover:text-bolt">How it works</Link></li>
               <li><Link to="/ecosystem" className="hover:text-bolt">Ecosystem</Link></li>
               <li><Link to="/roadmap" className="hover:text-bolt">Roadmap / Mainnet</Link></li>
-              <li><Link to="/login" className="hover:text-bolt">Enter App</Link></li>
+              <li><Link to="/app" className="hover:text-bolt">Enter App</Link></li>
             </ul>
           </div>
           <div>

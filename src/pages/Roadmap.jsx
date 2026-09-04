@@ -47,7 +47,7 @@ export default function Roadmap() {
             Join via Enter App to be in the waitlist path. We announce mainnet here and in community
             channels — not with inflated rider stats.
           </p>
-          <Link to="/login" className="btn-bolt mt-4 !w-auto !px-8 !rounded-full">
+          <Link to="/app" className="btn-bolt mt-4 !w-auto !px-8 !rounded-full">
             Join waitlist / Enter App
           </Link>
         </div>

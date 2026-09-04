@@ -33,7 +33,7 @@ export default function PhoneShell({ children }) {
           <button
             aria-label="More"
             onClick={() => setMore(true)}
-            className="safe-t absolute right-3 top-2 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-cyan/40 bg-void/75 text-cyan shadow-[0_0_14px_rgba(56,189,248,0.25)] backdrop-blur-md"
+            className="safe-t absolute right-3 top-2 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-bolt/35 bg-void/80 text-bone shadow-bolt backdrop-blur-md"
           >
             <span className="headline text-lg leading-none">···</span>
           </button>

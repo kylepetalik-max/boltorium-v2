@@ -4,7 +4,6 @@ import { listVehicles } from '../lib/vehicles.js';
 import { useStore } from '../state/store.jsx';
 import { formatInt } from '../lib/format.js';
 import { asset } from '../lib/asset.js';
-import VaultBg from '../components/VaultBg.jsx';
 
 const CATALOG = listVehicles();
 const CATS = ['EUC', 'E-MOTO', 'SCOOTER', 'AIR'];
@@ -29,8 +28,8 @@ const GEAR = [
 
 export default function Garage() {
   const nav = useNavigate();
-  const { vehicleId, setVehicle, vehicle, boltz } = useStore();
-  const [cat, setCat] = useState('EUC');
+  const { vehicleId, setVehicle, boltz } = useStore();
+  const [cat, setCat] = useState('E-MOTO');
   const [throttle, setThrottle] = useState(1);
   const [regen, setRegen] = useState(1);
   const [lights, setLights] = useState(1);
@@ -44,11 +43,11 @@ export default function Garage() {
   };
 
   return (
-    <div className="relative flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-5 pt-11">
-      <VaultBg src="brand/garage-3d.png" opacity={0.12} blur={16} />
-
-      <header className="relative flex items-center justify-between gap-2 pr-10">
-        <p className="headline text-[1.65rem] leading-none text-bolt">GARAGE + TUNE</p>
+    <div className="flex min-h-0 flex-1 flex-col overflow-y-auto bg-void px-4 pb-5 pt-11">
+      <header className="flex items-center justify-between gap-2 pr-10">
+        <p className="font-display text-[1.65rem] font-extrabold italic uppercase leading-none tracking-wide text-bone">
+          Garage + Tune
+        </p>
         <div className="flex items-center gap-1.5">
           <div className="flex items-center gap-1 rounded-full border border-bolt/40 bg-void px-2.5 py-1">
             <span className="text-bolt">⚡</span>
@@ -57,7 +56,7 @@ export default function Garage() {
           <button
             type="button"
             onClick={() => nav('/wallet')}
-            className="flex h-7 w-7 items-center justify-center rounded-md border border-bolt/40 text-bolt"
+            className="flex h-7 w-7 items-center justify-center rounded-full border border-bolt/40 bg-bolt text-sm font-bold text-void"
             aria-label="Add Boltz"
           >
             +
@@ -65,7 +64,41 @@ export default function Garage() {
         </div>
       </header>
 
-      <div className="relative mt-4 flex gap-1.5 overflow-x-auto">
+      <div className="mt-5">
+        <div className="mb-2 flex items-center justify-between">
+          <p className="font-display text-sm font-extrabold uppercase tracking-wide text-bone">Equipped Gear</p>
+          <button type="button" onClick={() => nav('/tune')} className="font-display text-xs font-extrabold uppercase text-bolt">
+            Customize
+          </button>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          {GEAR.map((g) => (
+            <div key={g.id} className="rounded-2xl border border-white/10 bg-[#0c100e] p-2">
+              <div className="flex h-20 items-center justify-center">
+                <img src={asset('brand/bmark-icon.png')} alt="" className="h-16 w-16 object-contain" />
+              </div>
+              <p className="font-display text-[12px] font-extrabold uppercase text-bone">{g.name}</p>
+              <p className="hud-label mt-0.5 text-bone/45">{g.rarity}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-5">
+        <div className="mb-3 flex items-center justify-between">
+          <p className="font-display text-sm font-extrabold uppercase tracking-wide text-bone">Tune</p>
+          <button type="button" onClick={reset} className="font-display text-xs font-extrabold uppercase text-bolt">
+            Reset
+          </button>
+        </div>
+        <div className="space-y-3">
+          <TuneSlider label="Throttle Map" value={throttle} onChange={setThrottle} marks={THROTTLE} active={THROTTLE[throttle]} />
+          <TuneSlider label="Regen" value={regen} onChange={setRegen} marks={REGEN} active={REGEN_FULL[regen]} />
+          <TuneSlider label="Lights" value={lights} onChange={setLights} marks={LIGHTS} active={LIGHTS[lights]} />
+        </div>
+      </div>
+
+      <div className="mt-5 flex gap-1.5 overflow-x-auto">
         {CATS.map((c) => {
           const on = c === cat;
           return (
@@ -74,9 +107,7 @@ export default function Garage() {
               type="button"
               onClick={() => setCat(c)}
               className={`shrink-0 rounded-full px-3.5 py-1.5 font-display text-[12px] font-extrabold tracking-wide ${
-                on
-                  ? 'chip-tab-on'
-                  : 'border border-white/15 bg-void/60 text-bone/50'
+                on ? 'chip-tab-on' : 'border border-white/15 bg-void/60 text-bone/50'
               }`}
             >
               {c}
@@ -85,89 +116,8 @@ export default function Garage() {
         })}
       </div>
 
-      <div className="holo-card relative mt-4 overflow-hidden rounded-2xl">
-        <div className="flex items-start justify-between px-3 pt-3">
-          <div>
-            <p className="headline text-base text-bone">YOUR RIDE</p>
-            <p className="hud-label mt-0.5 text-bolt">{vehicle.label.toUpperCase()}</p>
-          </div>
-          <p className="flex items-center gap-1.5 font-hud text-sm text-bone">
-            100%
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-bolt text-[10px] text-void">
-              ⚡
-            </span>
-          </p>
-        </div>
-        <div className="relative mx-auto h-40 w-full">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_80%,rgba(34,224,106,0.14),transparent_58%)]" />
-          <RideArt />
-          <img
-            src={asset('brand/bmark-icon.png')}
-            alt=""
-            className="pointer-events-none absolute bottom-2 left-1/2 h-16 w-16 -translate-x-1/2 object-contain"
-          />
-        </div>
-      </div>
-
-      <div className="glass relative mt-3 rounded-2xl p-3">
-        <div className="mb-2 flex items-center justify-between">
-          <p className="headline text-sm text-bone">EQUIPPED GEAR</p>
-          <button type="button" onClick={() => nav('/tune')} className="hud-label text-bolt">
-            CUSTOMIZE
-          </button>
-        </div>
-        <div className="grid grid-cols-2 gap-2">
-          {GEAR.map((g) => (
-            <div key={g.id} className="holo-card rounded-xl p-2">
-              <div className="flex h-20 items-center justify-center">
-                <img
-                  src={asset('brand/bmark-icon.png')}
-                  alt=""
-                  className="h-16 w-16 object-contain"
-                />
-              </div>
-              <p className="headline text-[12px] text-bone">{g.name}</p>
-              <p className="hud-label mt-0.5 text-bolt">{g.rarity}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="glass relative mt-3 rounded-2xl p-3">
-        <div className="mb-3 flex items-center justify-between">
-          <p className="headline text-sm text-bone">TUNE</p>
-          <button type="button" onClick={reset} className="hud-label text-bolt">
-            RESET
-          </button>
-        </div>
-        <div className="grid grid-cols-3 gap-2">
-          <TuneSlider
-            label="THROTTLE MAP"
-            value={throttle}
-            onChange={setThrottle}
-            marks={THROTTLE}
-            active={THROTTLE[throttle]}
-          />
-          <TuneSlider
-            label="REGEN"
-            value={regen}
-            onChange={setRegen}
-            marks={REGEN}
-            active={REGEN_FULL[regen]}
-          />
-          <TuneSlider
-            label="LIGHTS"
-            value={lights}
-            onChange={setLights}
-            marks={LIGHTS}
-            active={LIGHTS[lights]}
-          />
-        </div>
-      </div>
-
-      <p className="relative hud-label mt-4 text-bolt">FLEET · {cat}</p>
-      <p className="relative mt-0.5 text-[11px] text-bone/45">Full catalog. Hoverboard and Segway are not classes.</p>
-      <div className="relative mt-2 grid grid-cols-2 gap-2">
+      <p className="hud-label mt-4 text-bone/45">Catalog</p>
+      <div className="mt-2 grid grid-cols-2 gap-2">
         {fleet.map((v) => {
           const on = v.id === vehicleId;
           return (
@@ -176,12 +126,12 @@ export default function Garage() {
               type="button"
               onClick={() => setVehicle(v.id)}
               className={`rounded-2xl border p-3 text-left transition ${
-                on ? 'border-bolt/70 bg-bolt/15 shadow-bolt' : 'holo-card border-transparent'
+                on ? 'border-bolt bg-bolt/10 shadow-bolt' : 'border-white/10 bg-[#0c100e]'
               }`}
             >
               <p className="text-lg">{v.icon}</p>
-              <p className="headline text-base">{v.label}</p>
-              <p className="hud-label mt-1">
+              <p className="font-display text-base font-extrabold uppercase">{v.label}</p>
+              <p className="hud-label mt-1 text-bone/45">
                 {v.surface} · {v.maxSpeedKmh} KM/H
               </p>
               <p className="text-[10px] text-cyan">
@@ -197,9 +147,11 @@ export default function Garage() {
 
 function TuneSlider({ label, value, onChange, marks, active }) {
   return (
-    <div className="px-1">
-      <p className="font-display text-[9px] italic font-bold tracking-wide text-bone">{label}</p>
-      <p className="headline mt-0.5 text-[13px] text-bolt">{active}</p>
+    <div>
+      <div className="flex items-center justify-between">
+        <p className="font-display text-[11px] font-bold uppercase tracking-wide text-bone">{label}</p>
+        <p className="font-display text-[12px] font-extrabold uppercase text-bolt">{active}</p>
+      </div>
       <input
         className="tune-range mt-2"
         type="range"
@@ -218,25 +170,5 @@ function TuneSlider({ label, value, onChange, marks, active }) {
         ))}
       </div>
     </div>
-  );
-}
-
-function RideArt() {
-  return (
-    <svg viewBox="0 0 320 150" className="absolute inset-0 h-full w-full" aria-hidden>
-      <ellipse cx="160" cy="128" rx="110" ry="10" fill="rgba(34,224,106,0.1)" />
-      <g fill="none" stroke="#22E06A" strokeWidth="2.2" strokeLinejoin="round" strokeLinecap="round">
-        <circle cx="78" cy="108" r="26" />
-        <circle cx="78" cy="108" r="10" />
-        <circle cx="232" cy="108" r="28" />
-        <circle cx="232" cy="108" r="11" />
-        <path d="M78 108 L118 62 H168 L210 108" />
-        <path d="M118 62 L138 28 H188 L176 62" />
-        <path d="M168 62 L200 40 H236 L248 70" />
-        <path d="M210 108 L186 78 H140" />
-        <path d="M236 40 L252 28" />
-      </g>
-      <circle cx="252" cy="28" r="5" fill="#F5F5F0" opacity="0.85" />
-    </svg>
   );
 }

@@ -37,14 +37,14 @@ const MISSIONS = [
 ];
 
 const SHOP = [
-  { id: 's1', name: 'AOP HOODIE', cat: 'MERCH', price: 4200, solPrice: 0.38, note: 'RIDE THE LIGHTNING' },
-  { id: 's2', name: 'BOLTORIUM HELMET', cat: 'HELMET', price: 8900, solPrice: 0.82, note: 'MIPS trail lid' },
-  { id: 's3', name: 'RIDE GLOVES', cat: 'GLOVES', price: 1650, solPrice: 0.15, note: 'Grip in the storm' },
-  { id: 's4', name: 'VOLT TEE', cat: 'MERCH', price: 980, solPrice: 0.09, note: 'Graffiti B-mark' },
-  { id: 's5', name: 'CONTROLLER CABLE', cat: 'TUNE', price: 420, solPrice: 0.04, note: 'UART / BLE' },
-  { id: 's6', name: 'STORM GOGGLES', cat: 'GEAR', price: 2380, solPrice: 0.21, note: 'Night ops visor' },
-  { id: 's7', name: 'BOLTZ PACK', cat: 'BATTERY', price: 12500, solPrice: 1.14, note: 'Swap pack' },
-  { id: 's8', name: 'NEON VISOR', cat: 'GEAR', price: 3120, solPrice: 0.28, note: 'HUD visor' },
+  { id: 's1', name: 'BOLTORIUM HOODIE', cat: 'MERCH', price: 420, solPrice: 0.38, note: 'RIDE THE LIGHTNING' },
+  { id: 's2', name: 'MIPS TRAIL HELMET', cat: 'GEAR', price: 890, solPrice: 0.82, note: 'Required by the gate' },
+  { id: 's3', name: 'RIDE GLOVES', cat: 'GEAR', price: 180, solPrice: 0.15, note: 'Grip in the storm' },
+  { id: 's4', name: 'VOLT TEE', cat: 'MERCH', price: 140, solPrice: 0.09, note: 'Graffiti B-mark' },
+  { id: 's5', name: 'CONTROLLER CABLE', cat: 'TUNE', price: 60, solPrice: 0.04, note: 'UART / BLE' },
+  { id: 's6', name: 'STORM GOGGLES', cat: 'GEAR', price: 220, solPrice: 0.21, note: 'Night ops visor' },
+  { id: 's7', name: 'BOLTZ PACK', cat: 'BATTERY', price: 1250, solPrice: 1.14, note: 'Swap pack' },
+  { id: 's8', name: 'NEON VISOR', cat: 'GEAR', price: 312, solPrice: 0.28, note: 'HUD visor' },
 ];
 
 function load() {

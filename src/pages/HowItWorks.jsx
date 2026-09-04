@@ -39,7 +39,7 @@ export default function HowItWorks() {
           ))}
         </div>
         <div className="mt-10 flex flex-wrap gap-3">
-          <Link to="/login" className="btn-bolt !w-auto !px-8 !rounded-full">Enter App</Link>
+          <Link to="/app" className="btn-bolt !w-auto !px-8 !rounded-full">Enter App</Link>
           <Link to="/ecosystem" className="inline-flex h-14 items-center rounded-full border border-white/20 px-6 font-display font-bold uppercase tracking-wider">
             Ecosystem
           </Link>

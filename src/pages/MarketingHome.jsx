@@ -43,7 +43,7 @@ export default function MarketingHome() {
             and join the crew — demo on Solana until mainnet.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Link to="/login" className="btn-bolt !w-auto !px-8 !rounded-full">
+            <Link to="/app" className="btn-bolt !w-auto !px-8 !rounded-full">
               Join waitlist / Enter App
             </Link>
             <Link
@@ -149,7 +149,7 @@ export default function MarketingHome() {
             demo rails. We ship mainnet when Striker + tokenomics are locked.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <Link to="/login" className="btn-bolt !w-auto !px-8 !rounded-full">
+            <Link to="/app" className="btn-bolt !w-auto !px-8 !rounded-full">
               Enter App
             </Link>
             <Link to="/roadmap" className="inline-flex h-14 items-center rounded-full border border-white/20 px-6 font-display font-bold uppercase tracking-wider text-bone/80">
@@ -175,7 +175,7 @@ export default function MarketingHome() {
             <a href="https://x.com/" target="_blank" rel="noreferrer" className="rounded-full border border-white/20 px-6 py-3 font-display text-sm font-bold uppercase tracking-wider text-bone">
               X / Twitter
             </a>
-            <Link to="/login" className="rounded-full bg-bolt px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-void shadow-bolt">
+            <Link to="/app" className="rounded-full bg-bolt px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-void shadow-bolt">
               Enter App
             </Link>
           </div>

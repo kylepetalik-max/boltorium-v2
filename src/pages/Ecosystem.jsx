@@ -34,7 +34,7 @@ export default function Ecosystem() {
             </div>
           ))}
         </div>
-        <Link to="/login" className="btn-bolt mt-10 !w-auto !px-8 !rounded-full">Enter the app</Link>
+        <Link to="/app" className="btn-bolt mt-10 !w-auto !px-8 !rounded-full">Enter the app</Link>
       </div>
     </MarketingShell>
   );
