@@ -44,8 +44,8 @@ function SafetyGate({ onGo }) {
           <button
             key={c.id}
             onClick={() => toggle(c.id)}
-            className={`flex w-full items-start gap-3 rounded-2xl border p-3 text-left ${
-              ok[c.id] ? 'border-gold bg-gold/10 shadow-gold' : 'border-gold/20 bg-void'
+            className={`flex w-full items-start gap-3 rounded-2xl border p-3 text-left transition ${
+              ok[c.id] ? 'border-gold/70 bg-gold/12 shadow-gold' : 'holo-card border-transparent'
             }`}
           >
             <span
@@ -220,7 +220,7 @@ export default function Ride() {
         <button className="btn-danger mb-3" onClick={finish}>
           END RIDE
         </button>
-        <div className="grid grid-cols-4 gap-1 rounded-2xl border border-gold/30 bg-void/85 px-2 py-3">
+        <div className="glass grid grid-cols-4 gap-1 rounded-2xl px-2 py-3">
           <Stat icon={<RoadIcon />} k="DISTANCE" v={`${formatKm(ride.distanceM)} KM`} />
           <Stat icon={<ClockIcon />} k="DURATION" v={dur} />
           <Stat

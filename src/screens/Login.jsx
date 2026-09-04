@@ -21,30 +21,29 @@ export default function Login() {
   return (
     <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden bg-void">
       <HeroVideo />
-      <img
-        src={asset('brand/splash-3d.png')}
-        alt=""
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
-        style={{ opacity: 0.16, filter: 'blur(16px) saturate(0.65) brightness(0.55)' }}
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/70 via-void/45 to-void/92" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-void/75 via-void/50 to-void/95" />
       <div className="vault-vignette pointer-events-none absolute inset-0" />
+      <div className="vault-hex pointer-events-none absolute inset-0 opacity-[0.09]" />
 
-      <button type="button" className="absolute right-3 top-10 z-20 h-10 w-16" onClick={skipDemo} aria-label="Skip">
-        <img src={asset('brand/skip-gold.png')} alt="Skip" className="h-full w-full object-contain" />
+      <button type="button" className="skip-chip absolute right-3 top-10 z-20" onClick={skipDemo} aria-label="Skip">
+        Skip
       </button>
 
-      <div className="relative z-10 mt-16 flex flex-col items-center px-6">
+      <div className="relative z-10 mt-14 flex flex-col items-center px-5">
         <img
           src={asset('brand/logo-10.png')}
           alt="BOLTORIUM"
-          className="w-[90%] max-h-36 object-contain drop-shadow-[0_0_24px_rgba(212,175,55,0.4)]"
+          className="logo-float w-[94%] max-h-44 object-contain"
         />
-        <p className="mt-2 font-display text-[10px] font-bold tracking-[0.42em] text-gold/90">EST. 2023 · BLTRM</p>
+        <p className="mt-3 font-display text-[10px] font-bold tracking-[0.48em] text-gold/90">
+          EST. 2023 · BLTRM
+        </p>
+        <p className="mt-1 font-mono text-[9px] tracking-[0.2em] text-bone/40">RIDE THE LIGHTNING</p>
       </div>
 
       {mode === 'pick' && (
-        <div className="relative z-10 mt-auto space-y-3 px-6 pb-10">
+        <div className="glass-panel relative z-10 mx-5 mt-auto mb-9 space-y-3 p-4">
+          <p className="hud-label mb-1 text-center text-gold/70">AUTHENTICATE</p>
           <button
             className="btn-gold"
             onClick={() =>
@@ -69,7 +68,7 @@ export default function Login() {
 
       {mode === 'email' && (
         <form
-          className="relative z-10 mt-auto space-y-3 px-6 pb-10"
+          className="glass-panel relative z-10 mx-5 mt-auto mb-9 space-y-3 p-4"
           onSubmit={(e) => {
             e.preventDefault();
             go({
@@ -81,7 +80,7 @@ export default function Login() {
           }}
         >
           <input
-            className="w-full rounded-full border border-gold/40 bg-void/80 px-4 py-3 text-bone outline-none"
+            className="w-full rounded-full border border-gold/40 bg-void/80 px-4 py-3 text-bone outline-none focus:border-gold/70"
             placeholder="you@ride.local"
             type="email"
             value={email}

@@ -18,13 +18,11 @@ export default function PhoneShell({ children }) {
   return (
     <div className="min-h-[100dvh] bg-void">
       <div className="phone-canvas" data-skin={skin}>
-        {!videoHero && <div className="rain" />}
-        {!videoHero && <div className="lightning" />}
         {showMore && loc.pathname !== '/' && (
           <button
             aria-label="More"
             onClick={() => setMore(true)}
-            className="safe-t absolute right-3 top-2 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-gold/40 bg-void/70 text-gold"
+            className="safe-t absolute right-3 top-2 z-30 flex h-9 w-9 items-center justify-center rounded-full border border-gold/45 bg-void/75 text-gold shadow-[0_0_14px_rgba(212,175,55,0.25)] backdrop-blur-md"
           >
             <span className="headline text-lg leading-none">···</span>
           </button>
@@ -36,7 +34,7 @@ export default function PhoneShell({ children }) {
         <MoreSheet />
         {!videoHero && (
           <div className="pointer-events-none absolute left-2 top-[max(6px,env(safe-area-inset-top))] z-20">
-            <span className="hud-label text-[8px] text-bolt/50">{skinLabel(skin)}</span>
+            <span className="hud-label text-[8px] text-gold/40">{skinLabel(skin)}</span>
           </div>
         )}
       </div>

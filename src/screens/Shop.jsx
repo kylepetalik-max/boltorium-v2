@@ -61,12 +61,12 @@ export default function Shop() {
         <p className="headline text-2xl text-gold">MARKETPLACE</p>
       </div>
 
-      <div className="relative mt-4 flex rounded-full border border-gold/25 bg-void/70 p-1">
+      <div className="glass relative mt-4 flex rounded-full p-1">
         <button
           type="button"
           onClick={() => setTab('official')}
-          className={`flex-1 rounded-full py-1.5 font-display text-sm font-extrabold italic tracking-wider ${
-            tab === 'official' ? 'bg-gold text-void shadow-gold' : 'text-bone/70'
+          className={`flex-1 rounded-full py-1.5 font-display text-sm font-extrabold tracking-wider transition ${
+            tab === 'official' ? 'metal-gold shadow-gold' : 'text-bone/70'
           }`}
         >
           OFFICIAL
@@ -74,8 +74,8 @@ export default function Shop() {
         <button
           type="button"
           onClick={() => setTab('p2p')}
-          className={`flex-1 rounded-full py-1.5 font-display text-sm font-extrabold italic tracking-wider ${
-            tab === 'p2p' ? 'bg-gold text-void shadow-gold' : 'text-bone/70'
+          className={`flex-1 rounded-full py-1.5 font-display text-sm font-extrabold tracking-wider transition ${
+            tab === 'p2p' ? 'metal-gold shadow-gold' : 'text-bone/70'
           }`}
         >
           P2P
@@ -124,7 +124,7 @@ export default function Shop() {
               type="button"
               disabled={boltz < item.price}
               onClick={() => buy(item.id)}
-              className="mt-2 w-full rounded-lg bg-gold py-1.5 font-display text-xs font-extrabold italic text-void disabled:opacity-30"
+              className="btn-gold mt-2 !h-9 w-full !rounded-lg !text-xs disabled:opacity-30"
             >
               {boltz < item.price ? 'NEED BZ' : 'BUY'}
             </button>

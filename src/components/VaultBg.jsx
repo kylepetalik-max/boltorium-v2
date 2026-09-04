@@ -17,6 +17,7 @@ export default function VaultBg({ src, opacity = 0.12, blur = 14 }) {
         />
       ) : null}
       <div className="vault-grid pointer-events-none absolute inset-0" />
+      <div className="vault-hex pointer-events-none absolute inset-0" />
       <div className="vault-vignette pointer-events-none absolute inset-0" />
       <div className="vault-gold-haze pointer-events-none absolute inset-0" />
     </>

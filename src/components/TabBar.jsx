@@ -16,7 +16,7 @@ export default function TabBar() {
   const { ride } = useStore();
 
   return (
-    <nav className="safe-b relative z-30 grid grid-cols-5 items-end border-t border-gold/25 bg-void/95 px-1 pt-2">
+    <nav className="tab-bar safe-b relative z-30 grid grid-cols-5 items-end px-1 pt-2">
       {TABS.map((t) => {
         const active =
           loc.pathname === t.path ||
@@ -29,7 +29,7 @@ export default function TabBar() {
               onClick={() => nav(ride ? '/ride' : '/ride')}
               className="relative -top-4 flex flex-col items-center"
             >
-              <span className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-gold bg-void shadow-gold">
+              <span className="tab-ride-btn flex h-14 w-14 items-center justify-center rounded-full">
                 <BMark className="h-8 w-8" />
               </span>
               <span className="hud-label mt-1 text-[9px] text-gold">{ride ? 'LIVE' : 'RIDE'}</span>
@@ -41,10 +41,15 @@ export default function TabBar() {
           <button
             key={t.id}
             onClick={() => nav(t.path)}
-            className={`flex flex-col items-center gap-1 pb-1 ${active ? 'text-bolt' : 'text-bone/45'}`}
+            className={`flex flex-col items-center gap-1 pb-1 transition ${
+              active ? 'tab-active-glow text-bolt' : 'text-bone/45'
+            }`}
           >
             <Icon active={active} />
-            <span className="hud-label text-[9px]" style={{ color: active ? '#22E06A' : undefined }}>
+            <span
+              className="hud-label text-[9px]"
+              style={{ color: active ? '#22E06A' : undefined }}
+            >
               {t.label}
             </span>
           </button>

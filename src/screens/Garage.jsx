@@ -73,10 +73,10 @@ export default function Garage() {
               key={c}
               type="button"
               onClick={() => setCat(c)}
-              className={`shrink-0 rounded-full px-3.5 py-1.5 font-display text-[12px] italic font-extrabold tracking-wide ${
+              className={`shrink-0 rounded-full px-3.5 py-1.5 font-display text-[12px] font-extrabold tracking-wide ${
                 on
-                  ? 'border border-gold bg-gold/10 text-gold shadow-gold'
-                  : 'border border-transparent bg-graphite text-bone/50'
+                  ? 'chip-gold-on'
+                  : 'border border-gold/15 bg-void/60 text-bone/50'
               }`}
             >
               {c}
@@ -85,7 +85,7 @@ export default function Garage() {
         })}
       </div>
 
-      <div className="relative mt-4 overflow-hidden rounded-2xl border border-gold/25 bg-graphite/80">
+      <div className="holo-card relative mt-4 overflow-hidden rounded-2xl">
         <div className="flex items-start justify-between px-3 pt-3">
           <div>
             <p className="headline text-base text-bone">YOUR RIDE</p>
@@ -109,7 +109,7 @@ export default function Garage() {
         </div>
       </div>
 
-      <div className="relative mt-3 rounded-2xl border border-gold/20 bg-void/55 p-3">
+      <div className="glass relative mt-3 rounded-2xl p-3">
         <div className="mb-2 flex items-center justify-between">
           <p className="headline text-sm text-bone">EQUIPPED GEAR</p>
           <button type="button" onClick={() => nav('/tune')} className="hud-label text-gold">
@@ -118,7 +118,7 @@ export default function Garage() {
         </div>
         <div className="grid grid-cols-2 gap-2">
           {GEAR.map((g) => (
-            <div key={g.id} className="rounded-xl border border-gold/15 bg-void p-2">
+            <div key={g.id} className="holo-card rounded-xl p-2">
               <div className="flex h-20 items-center justify-center">
                 <img
                   src={asset('brand/bmark-icon.png')}
@@ -133,7 +133,7 @@ export default function Garage() {
         </div>
       </div>
 
-      <div className="relative mt-3 rounded-2xl border border-gold/20 bg-void/55 p-3">
+      <div className="glass relative mt-3 rounded-2xl p-3">
         <div className="mb-3 flex items-center justify-between">
           <p className="headline text-sm text-bone">TUNE</p>
           <button type="button" onClick={reset} className="hud-label text-gold">
@@ -175,8 +175,8 @@ export default function Garage() {
               key={v.id}
               type="button"
               onClick={() => setVehicle(v.id)}
-              className={`rounded-2xl border p-3 text-left ${
-                on ? 'border-gold bg-gold/15 shadow-gold' : 'border-gold/15 bg-void/70'
+              className={`rounded-2xl border p-3 text-left transition ${
+                on ? 'border-gold/70 bg-gold/15 shadow-gold' : 'holo-card border-transparent'
               }`}
             >
               <p className="text-lg">{v.icon}</p>
