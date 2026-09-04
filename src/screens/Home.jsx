@@ -11,99 +11,139 @@ export default function Home() {
   const { boltz, xp, vehicle, rides, crew } = useStore();
   const volt = voltFromXp(xp);
   const km = rides.reduce((n, r) => n + (r.distanceM || 0), 0);
+  const rideCount = rides.length;
   const rank = useMemo(() => crewRank(crew), [crew]);
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col overflow-y-auto bg-void px-4 pb-3 pt-11">
-      <div className="flex items-center gap-3 pr-10">
-        <GraffitiB className="h-14 w-14 shrink-0 drop-shadow-[0_0_14px_rgba(34,224,106,0.65)]" />
+    <div className="flex min-h-0 flex-1 flex-col overflow-y-auto bg-void px-3 pb-4 pt-10">
+      {/* Brand lockup — graffiti lightning */}
+      <div className="flex items-center gap-2.5 pr-2">
+        <GraffitiB className="h-12 w-12 shrink-0 drop-shadow-[0_0_18px_rgba(0,255,138,0.7)]" />
         <img
           src={asset('brand/boltorium-graffiti-v1.png')}
           alt="BOLTORIUM"
-          className="h-12 w-[min(58%,220px)] object-contain object-left drop-shadow-[0_0_14px_rgba(34,224,106,0.45)]"
+          className="h-11 w-[min(62%,240px)] object-contain object-left drop-shadow-[0_0_20px_rgba(0,255,138,0.55)]"
         />
       </div>
 
-      <h1 className="mt-5 font-display text-[1.85rem] font-extrabold italic uppercase leading-none tracking-wide text-bone">
-        Welcome back.
-      </h1>
+      {/* Bento glass dashboard (live-style) */}
+      <div className="mt-4 grid grid-cols-2 gap-2.5">
+        {/* Boltz balance — spans 2 */}
+        <div
+          className="glass-card col-span-2 flex min-h-[168px] flex-col justify-between p-4"
+          data-testid="boltz-balance-card"
+        >
+          <div className="flex items-start justify-between">
+            <div>
+              <p className="hud-label text-gold/90">BOLTZ BALANCE</p>
+              <p
+                className="stat-number mt-1 font-hud text-4xl font-extrabold tracking-tight text-gold text-glow-gold"
+                data-testid="boltz-balance-value"
+              >
+                {formatInt(boltz)}
+              </p>
+            </div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gold/20 shadow-[0_0_15px_rgba(255,180,0,0.25)]">
+              <span className="font-hud text-sm font-extrabold text-gold">BZ</span>
+            </div>
+          </div>
+          <div className="mt-4 flex gap-2.5">
+            <button
+              type="button"
+              onClick={() => nav('/ride')}
+              className="btn-primary flex-1"
+              data-testid="start-ride-btn"
+            >
+              <BoltIcon /> Start Ride
+            </button>
+            <button
+              type="button"
+              onClick={() => nav('/wallet')}
+              className="flex flex-1 items-center justify-center rounded-full border border-white/10 bg-white/5 px-3 py-2.5 font-hud text-xs font-bold uppercase tracking-wider text-bone/85 transition active:scale-[0.98]"
+              data-testid="view-wallet-btn"
+            >
+              View Wallet
+            </button>
+          </div>
+        </div>
 
-      <div className="mt-4 flex items-center gap-2">
-        <p className="hud-label text-bone/55">Boltz</p>
-        <span className="inline-flex items-center gap-1.5 rounded-md border border-bolt/50 bg-bolt/10 px-2 py-0.5">
-          <span className="flex h-5 w-5 items-center justify-center rounded-[4px] bg-bolt text-[9px] font-extrabold text-void">
-            BZ
-          </span>
-          <span className="font-hud text-lg font-extrabold italic text-bolt">{formatInt(boltz)}</span>
-        </span>
-      </div>
-
-      <button
-        type="button"
-        onClick={() => nav('/ride')}
-        className="btn-bolt mt-4 !h-12 !rounded-full shadow-[0_0_28px_rgba(34,224,106,0.55)]"
-      >
-        Start Ride <span aria-hidden>⚡</span>
-      </button>
-
-      <div className="mt-5 grid grid-cols-3 gap-0 divide-x divide-white/10 border-y border-white/10 py-3">
-        <button type="button" onClick={() => nav('/rank')} className="px-2 text-left">
-          <p className="hud-label text-[8px] text-bone/50">Volt Tier</p>
-          <p className="mt-1 font-display text-base font-extrabold italic text-bolt">{volt.name}</p>
-          <p className="text-[11px] font-bold text-solana">LVL {volt.level}</p>
-          <div className="mt-1.5 h-1 overflow-hidden rounded-full bg-white/10">
-            <div className="h-full rounded-full bg-gradient-to-r from-cyan to-solana" style={{ width: `${volt.pct}%` }} />
+        <button
+          type="button"
+          onClick={() => nav('/rank')}
+          className="glass-card box-glow p-4 text-left"
+          data-testid="level-card"
+        >
+          <p className="hud-label">VOLT TIER</p>
+          <p className="mt-1 font-hud text-2xl font-extrabold text-bolt">{volt.name}</p>
+          <p className="font-mono text-[11px] font-bold text-solana">LVL {volt.level}</p>
+          <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+            <div className="h-full rounded-full bg-gradient-to-r from-[#00ff8a] to-[#7a00ff]" style={{ width: `${volt.pct}%` }} />
           </div>
           <p className="mt-1 font-mono text-[8px] text-bone/40">
             {volt.into} / {volt.need} XP
           </p>
         </button>
-        <button type="button" onClick={() => nav('/rank')} className="px-2 text-center">
-          <p className="hud-label text-[8px] text-bone/50">Rank</p>
-          <p className="mt-1 font-display text-2xl font-extrabold italic text-cyan">#{rank.place}</p>
-          <p className="text-[10px] font-bold text-cyan/80">TOP {rank.pct}%</p>
-        </button>
-        <button type="button" onClick={() => nav('/garage')} className="px-2 text-right">
-          <p className="hud-label text-[8px] text-bone/50">Vehicle</p>
-          <p className="mt-1 font-display text-base font-extrabold italic text-bolt">
-            {vehicle.label.toUpperCase()}
-          </p>
-          <p className="mt-1 flex items-center justify-end gap-1 text-[11px] text-bolt">
-            <span>⚡</span>
-            <span className="font-hud font-bold">{formatKm(km)} KM</span>
-          </p>
-        </button>
-      </div>
 
-      <p className="hud-label mt-5 text-bone/45">Quick Access</p>
-      <div className="mt-2 grid grid-cols-4 gap-2">
-        <Quick
-          label="Airdrops"
-          color="text-cyan border-cyan/45 shadow-[0_0_14px_rgba(56,189,248,0.2)]"
-          onClick={() => nav('/airdrops')}
-          icon={<Chute />}
-        />
-        <Quick
-          label="Challenges"
-          color="text-solana border-solana/45 shadow-[0_0_14px_rgba(139,92,246,0.2)]"
-          onClick={() => nav('/missions')}
-          icon={<Bolt />}
-        />
-        <Quick
-          label="Garage"
-          color="text-bolt border-bolt/45 shadow-[0_0_14px_rgba(34,224,106,0.2)]"
+        <button
+          type="button"
+          onClick={() => nav('/rank')}
+          className="glass-card box-glow p-4 text-left"
+          data-testid="rank-card"
+        >
+          <p className="hud-label">RANK</p>
+          <p className="mt-1 font-hud text-3xl font-extrabold text-cyan">#{rank.place}</p>
+          <p className="font-mono text-[11px] font-bold text-cyan/80">TOP {rank.pct}%</p>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => nav('/map')}
+          className="glass-card p-4 text-left"
+          data-testid="distance-card"
+        >
+          <p className="hud-label">TOTAL DISTANCE</p>
+          <p className="mt-1 font-hud text-2xl font-extrabold text-bolt">
+            {formatKm(km)} <span className="text-sm text-bone/50">KM</span>
+          </p>
+        </button>
+
+        <button
+          type="button"
+          onClick={() => nav('/feed')}
+          className="glass-card p-4 text-left"
+          data-testid="rides-card"
+        >
+          <p className="hud-label">TOTAL RIDES</p>
+          <p className="mt-1 font-hud text-2xl font-extrabold text-bone">{rideCount}</p>
+        </button>
+
+        <button
+          type="button"
           onClick={() => nav('/garage')}
-          icon={<GarageIcon />}
-        />
-        <Quick
-          label="Shop"
-          color="text-solana border-solana/45 shadow-[0_0_14px_rgba(139,92,246,0.2)]"
-          onClick={() => nav('/shop')}
-          icon={<Cart />}
-        />
+          className="glass-card col-span-2 flex items-center justify-between gap-3 p-4 text-left"
+          data-testid="vehicle-card"
+        >
+          <div>
+            <p className="hud-label">VEHICLE</p>
+            <p className="mt-1 font-hud text-xl font-extrabold capitalize text-bolt">
+              {vehicle.label}
+            </p>
+          </div>
+          <span className="rounded-full border border-bolt/35 bg-bolt/10 px-3 py-1 font-mono text-[10px] text-bolt">
+            GARAGE →
+          </span>
+        </button>
       </div>
 
-      <p className="tagline mt-auto pt-5 text-center text-[9px]">Ride the Lightning</p>
+      <p className="hud-label mt-5 px-0.5 text-bone/45">Quick Access</p>
+      <div className="mt-2 grid grid-cols-4 gap-2">
+        <Quick label="Map" color="text-cyan border-cyan/40" onClick={() => nav('/map')} icon={<MapPin />} />
+        <Quick label="Rank" color="text-bolt border-bolt/40" onClick={() => nav('/rank')} icon={<Bars />} />
+        <Quick label="Airdrops" color="text-cyan border-cyan/40" onClick={() => nav('/airdrops')} icon={<Chute />} />
+        <Quick label="Missions" color="text-solana border-solana/40" onClick={() => nav('/missions')} icon={<BoltIcon className="h-5 w-5" />} />
+      </div>
+
+      <p className="tagline mt-6 pb-2 text-center text-[9px]">Ride the Lightning</p>
     </div>
   );
 }
@@ -113,43 +153,41 @@ function Quick({ label, color, onClick, icon }) {
     <button
       type="button"
       onClick={onClick}
-      className={`flex aspect-square flex-col items-center justify-center gap-1 rounded-2xl border bg-void/80 ${color}`}
+      className={`glass flex aspect-square flex-col items-center justify-center gap-1 rounded-2xl border ${color}`}
     >
       {icon}
-      <span className="font-display text-[9px] font-extrabold uppercase tracking-wide">{label}</span>
+      <span className="font-hud text-[9px] font-extrabold uppercase tracking-wide">{label}</span>
     </button>
   );
 }
 
+function BoltIcon({ className = 'mr-1 inline h-4 w-4' }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden className={className}>
+      <path d="M13 2 4 14h7l-2 8 11-14h-7l2-6z" />
+    </svg>
+  );
+}
 function Chute() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
       <path d="M4 10c0-5 3.2-8 8-8s8 3 8 8" />
       <path d="M4 10h16 M6 10 12 20 18 10" />
     </svg>
   );
 }
-function Bolt() {
+function MapPin() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M13 2 4 14h7l-2 8 11-14h-7l2-6z" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+      <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z" />
+      <circle cx="12" cy="10" r="2.2" />
     </svg>
   );
 }
-function GarageIcon() {
+function Bars() {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-      <path d="M3 20 V10 L12 4 l9 6 v10" />
-      <path d="M8 20 v-6 h8 v6" />
-    </svg>
-  );
-}
-function Cart() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-      <circle cx="9" cy="20" r="1.5" />
-      <circle cx="18" cy="20" r="1.5" />
-      <path d="M3 4h2l2.2 11h11.3l1.8-7H7" />
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+      <path d="M8 19V10 M12 19V5 M16 19v-6" />
     </svg>
   );
 }

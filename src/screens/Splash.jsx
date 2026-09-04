@@ -23,7 +23,7 @@ export default function Splash() {
       <img
         src={asset('brand/boltorium-graffiti-v1.png')}
         alt="BOLTORIUM"
-        className="pointer-events-none absolute inset-x-0 top-[14%] z-10 mx-auto w-[88%] max-h-[36%] object-contain drop-shadow-[0_0_32px_rgba(255,255,255,0.2)]"
+        className="graffiti-glow pointer-events-none absolute inset-x-0 top-[14%] z-10 mx-auto w-[88%] max-h-[36%] object-contain"
       />
       <img
         src={asset('brand/kyle-rtl-mark.png')}
@@ -45,7 +45,7 @@ export default function Splash() {
 
       <div className="absolute inset-x-0 bottom-8 z-10 flex flex-col items-center gap-3 px-6">
         <p className="tagline text-[10px]">Ride the Lightning</p>
-        <button type="button" className="btn-bolt !rounded-full" onClick={go}>
+        <button type="button" className="btn-primary !h-14 !rounded-full !text-base" onClick={go}>
           Enter
         </button>
         <Link

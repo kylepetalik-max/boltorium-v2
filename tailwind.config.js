@@ -17,11 +17,12 @@ export default {
         danger: '#FF3B5C',
       },
       fontFamily: {
-        hud: ['Rajdhani', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['Syne', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        hud: ['Orbitron', 'Rajdhani', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        display: ['Syne', 'Rajdhani', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
         tag: ['Syne', 'Inter', 'sans-serif'],
-        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        marketing: ['Syne', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       maxWidth: { phone: '430px' },
       boxShadow: {

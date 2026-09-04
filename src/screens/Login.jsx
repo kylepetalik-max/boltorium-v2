@@ -39,7 +39,7 @@ export default function Login() {
         <img
           src={asset('brand/boltorium-graffiti-v1.png')}
           alt="BOLTORIUM"
-          className="w-[88%] max-h-36 object-contain drop-shadow-[0_0_28px_rgba(255,255,255,0.18)]"
+          className="graffiti-glow w-[88%] max-h-36 object-contain"
         />
         <img
           src={asset('brand/kyle-rtl-mark.png')}
@@ -108,7 +108,7 @@ export default function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <button className="btn-bolt !rounded-full" type="submit">
+            <button className="btn-primary !h-14 !rounded-full !text-base" type="submit">
               Continue with Email
             </button>
             <button type="button" className="btn-ghost !rounded-full" onClick={() => setMode('pick')}>
