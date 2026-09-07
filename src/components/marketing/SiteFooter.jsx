@@ -11,7 +11,7 @@ export default function SiteFooter() {
             alt="BOLTORIUM"
             className="h-10 w-auto max-w-[180px] object-contain"
           />
-          <p className="tagline mt-3 text-[11px]">Ride the Lightning</p>
+          
           <p className="mt-3 max-w-sm text-sm text-bone/50">
             GPS-verified ride-to-earn on Solana. Demo / devnet until mainnet — no fake claims.
           </p>

@@ -19,7 +19,7 @@ const BENEFITS = [
 
 export default function MarketingHome() {
   return (
-    <MarketingShell title="BOLTORIUM — Ride the Lightning | Ride-to-Earn">
+    <MarketingShell title="BOLTORIUM — Ride-to-Earn">
       {/* HERO */}
       <section className="relative min-h-[88dvh] overflow-hidden">
         <HeroVideo />
@@ -32,12 +32,6 @@ export default function MarketingHome() {
             alt="BOLTORIUM"
             className="w-[min(92vw,520px)] object-contain drop-shadow-[0_0_40px_rgba(56,189,248,0.35)]"
           />
-          <img
-            src={asset('brand/kyle-rtl-mark.png')}
-            alt="Ride the Lightning"
-            className="mt-4 w-[min(78vw,360px)] object-contain opacity-95"
-          />
-          <p className="tagline mt-4 text-xs sm:text-sm">Ride the Lightning</p>
           <p className="mt-5 max-w-xl text-base text-bone/75 sm:text-lg">
             GPS-verified ride-to-earn for electric riders. Charge up Boltz, build your garage,
             and join the crew — demo on Solana until mainnet.

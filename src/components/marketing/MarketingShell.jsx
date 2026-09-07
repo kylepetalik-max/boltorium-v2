@@ -8,7 +8,7 @@ export default function MarketingShell({ children, title }) {
     document.body.classList.add('marketing-mode');
     return () => {
       document.body.classList.remove('marketing-mode');
-      document.title = 'BOLTORIUM — Ride the Lightning';
+      document.title = 'BOLTORIUM — Ride-to-Earn';
     };
   }, [title]);
 
